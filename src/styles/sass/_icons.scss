@@ -1,0 +1,42 @@
+@import 'variables';
+
+@mixin icons {
+  font-size: $extra-large-size;
+  color: $main-color;
+}
+
+.menu--icon {
+  @include icons();
+}
+.search--icon {
+  @include icons();
+}
+
+.like--icon {
+  @include icons();
+  
+}
+
+.dislike--icon {
+  @include icons(); 
+}
+
+.close--icon {
+  @include icons();
+}
+
+.collection--icon {
+  @include icons();
+}
+
+.links--icon {
+  @include icons();
+}
+.left--icon {
+  @include icons();
+}
+
+.right--icon {
+  @include icons();
+}
+

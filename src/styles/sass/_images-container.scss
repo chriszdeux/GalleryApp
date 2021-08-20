@@ -1,0 +1,105 @@
+// @import 'variables';
+
+.images__container {
+  margin-top: 5rem;
+}
+
+@mixin cards($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin info-card($size, $color, $weight, $letter-spacing) {
+  @debug "info of: #{ $size }"; 
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+  letter-spacing: $letter-spacing;
+}
+
+.card {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 5rem
+
+}
+
+.small__card {
+  @include cards(100%, $height-small-card );
+  overflow: hidden;
+  position: relative;
+  background-color: $header-color;
+  margin-bottom: 2rem;
+  transition: .3s ease;
+}
+
+.small__card:hover {
+  transform: scale(1.1);
+}
+
+.small__card:hover ~ .image__info {
+  padding: 1rem ;
+  border: 1px solid $main-color;
+}
+
+.small--image--card {
+  width: 100%;
+    height: $height-small-card;
+    object-fit: cover;
+}
+
+.image__info {
+  position: relative;
+  transition: .3s ease
+  // width: 50%;
+  // position: absolute;
+  // bottom: 5%;
+  // left: 5%;
+}
+
+
+
+.title--card {
+  @include info-card($extra-large-size, $main-color, $light-weight, 2px);
+  padding-top: 2rem;
+  padding-left: 1rem;
+  // font-size: $regular-size;
+}
+
+.sub--title--card {
+  @include info-card($small-size, $secondary-color, $regular-weight, 2px );
+  position: absolute;
+  top: 2%;
+  text-transform: uppercase;
+}
+
+.info--card {
+  @include info-card($small-size, $secondary-color, $light-weight, 1px);
+  text-align: left;
+  line-height: 2.5rem;
+}
+
+.card--ribbon {
+  position: absolute;
+  width: 50rem;
+  height: 7rem;
+  background-color: #334756;
+  transform: rotate(-45deg);
+  opacity: 0.7;
+}
+
+.icons__buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+  height: 5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  .like--icon, .dislike--icon {
+    font-size: $extra-large-size;
+  }
+}

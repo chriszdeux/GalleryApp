@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap');
+
+
+@import 'sass/variables';
+@import 'sass/icons';
+@import 'sass/header';
+@import 'sass/main';
+@import 'sass/images-container';
+@import './sass/modal';
+@import './sass/media-queries';
+@import './sass/modal-image-info.scss';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: $font;
+}
+
+body {
+  background-color: $background-color;
+}
+
+@mixin containers($width) {
+  width: $width;
+  height: auto;
+  margin: 0 auto;
+}
+
+.container-10 {
+  @include containers(100%);
+}
+.container-9 {
+  @include containers(90%);
+}
+.container-8 {
+  @include containers(80%);
+}
+
+@mixin titles($size, $color) {
+  font-size: $size;
+  color: $color;
+}
+
+.title {
+  @include titles($jumbo-size, $main-color);
+}
+.sub--title {
+  @include titles($large-size, $secondary-color);
+  font-weight: $light-weight;
+}
+
+.info {
+  @include titles($regular-size, $secondary-color);
+  font-weight: $light-weight;
+  // width: 90%;
+  // margin: 0 auto;
+  text-align: center;
+}
+
+.bottom--fade {
+  width: 100%;
+  height: 40rem;
+  position: absolute;
+  bottom: 0;
+  background: rgb(24,24,24);
+background: linear-gradient(0deg, rgb(0, 0, 0) 56%, rgba(181,181,181,0) 100%);
+}
