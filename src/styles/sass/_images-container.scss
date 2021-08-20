@@ -45,7 +45,7 @@
 
 .small--image--card {
   width: 100%;
-    height: $height-small-card;
+    height: inherit;
     object-fit: cover;
 }
 

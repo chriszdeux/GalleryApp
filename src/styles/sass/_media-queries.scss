@@ -42,6 +42,26 @@
   }
 }
 
+@media only screen and (min-width: 1920px) {
+  #main {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+/* MAIN GALLERY */
+
+@media only screen and ( min-width: 1024px ) {
+  .small__card {
+    height: 25rem;
+  }
+}
+@media only screen and ( min-width: 1920px ) {
+  .small__card {
+    height: 30rem;
+  }
+}
 
 /*MODAL*/
 

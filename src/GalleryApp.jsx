@@ -1,6 +1,6 @@
 import React from 'react';
-import photo from '../utils/temp/photo.jpg';
-import photo2 from '../styles/photo2.jpeg';
+import photo from '../src/utils/temp/photo.jpeg';
+import photo2 from '../src/utils/temp/photo.jpg';
 //ICONS
 
 import { BiDislike as DislikeIcon, BiLike as LikeIcon  } from 'react-icons/bi';
@@ -9,22 +9,19 @@ import { AiFillCloseSquare as CloseIcon } from 'react-icons/ai';
 import { MdCollections as CollectionIcon } from 'react-icons/md';
 import { GoFileSymlinkFile as LinksIcon } from 'react-icons/go';
 import { RiArrowLeftSLine as Left, RiArrowRightSLine as Right } from 'react-icons/ri'
-import { Header } from './header/Header';
-import { Main } from './main/Main';
-import { UserPage } from './user-page/UserPage';
 
-
+import { Header } from './components/header/Header';
+import { Main } from "./components/main/Main";
+import { MainGallery } from "./components/main/MainGallery";
+import { UserPage } from "./components/user-page/UserPage";
 
 
 export const GalleryApp = () => {
   return (
     <>
-      
-      {/* <Header />
-      <Main /> */}
-      <UserPage />
-
-
+      <Header />
+      <Main />
+      <MainGallery />
       
 
 
