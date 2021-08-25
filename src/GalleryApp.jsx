@@ -14,25 +14,13 @@ import { Header } from './components/header/Header';
 import { Main } from "./components/main/Main";
 import { MainGallery } from "./components/main/MainGallery";
 import { UserPage } from "./components/user-page/UserPage";
-
+import { ImageInfo } from "./components/modal/ImageInfo";
+import { AppRouter } from './router/AppRouter';
 
 export const GalleryApp = () => {
   return (
     <>
-      <Header />
-      <Main />
-      <MainGallery />
-      
-
-
-      
-
-
-      {/* <nav className="mobile__navbar">
-        <ul className="mobile__menu">
-          <li className="menu--list">my library</li>
-        </ul>
-      </nav> */}
+      <AppRouter />
     </>
   )
 }

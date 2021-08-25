@@ -15,6 +15,38 @@
   object-fit: cover;
 }
 
+.hero__gallery {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 70rem;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 20%;
+
+  @mixin img-size {
+    width: 37rem;
+    height: 50rem;
+    object-fit: cover;
+    // transform: translateX($position) scale($size);
+    box-shadow: 0 0 15px 10px $header-color;
+  }
+
+  .img--gallery--active {
+    @include img-size();
+    transform: scale(1.2);
+    z-index: 1;
+  }
+  
+  .img--gallery--none {
+    @include img-size();
+    opacity: .8;
+  }
+  /* transform: translateY(-25%); */
+}
+
 .main__info {
   position: absolute;
   bottom: 5%;

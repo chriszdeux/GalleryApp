@@ -3,10 +3,14 @@ import photo from '../../utils/temp/photo.jpg';
 import { BiDislike as DislikeIcon, BiLike as LikeIcon  } from 'react-icons/bi';
 // import '../utils/icons';
 import { AiFillCloseSquare as CloseIcon } from 'react-icons/ai'
-export const ImageInfo = () => {
+export const ImageInfo = ( { handleToggle } ) => {
+  // debugger
   return (
     <section className="modal__image__info">
-      <CloseIcon className="close--icon"/>
+      <CloseIcon 
+        className="close--icon"
+        onClick={ handleToggle }
+      />
         {/* <div className="username"> */}
           {/* <figure className="username__profile__image">
             <img className="username--profile--image" src={ photo } alt="" />

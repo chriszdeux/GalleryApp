@@ -23,6 +23,11 @@
 
 .close--icon {
   @include icons();
+  transition: .3s ease;
+}
+
+.close--icon:active {
+  transform: scale(1.1)
 }
 
 .collection--icon {

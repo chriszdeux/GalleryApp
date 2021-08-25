@@ -20,6 +20,12 @@ ul, ol, li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: $main-color;
+  display: flex;
+}
+
 html {
   font-size: 62.5%;
   font-family: $font;
