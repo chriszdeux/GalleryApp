@@ -1,13 +1,21 @@
 import React from 'react'
 
 import photo from '../../utils/temp/photo.jpg';
+import photo2 from '../../utils/temp/photo2.jpeg';
+import { MainGallery } from './MainGallery';
 
 
 export const Main = () => {
   return (
+    <>
     <main id="main">
       <figure className="hero__image">
         <img className="hero--image" src={ photo } alt="" />
+      </figure>
+      <figure className="hero__gallery">
+          <img className="img--gallery--none" src={ photo2 } alt="" />
+          <img className="img--gallery--active" src={ photo } alt="" />
+          <img className="img--gallery--none" src={ photo2 } alt="" />
       </figure>
       <div className="main__info">
         <h3 className="sub--title">Some text</h3>
@@ -17,5 +25,7 @@ export const Main = () => {
 
       <div className="bottom--fade"></div>
     </main>
+    <MainGallery />
+    </>
   )
 }
