@@ -1,7 +1,14 @@
 /*HEADER*/
 
 @media only screen and ( min-width: 768px ) {
-  
+  .search__form {
+
+  }
+
+  .search--input {
+    position: fixed;
+    top: 15%;
+  }
 }
 
 @media only screen and( min-width: 1024px ) {
@@ -21,7 +28,7 @@
 
   .menu__list {
     flex-direction: row;
-    width: 50%;
+    // width: 70%;
     justify-content: flex-end;
     position: static;
     margin: 0;
@@ -48,6 +55,14 @@
 
 /*MAIN PAGE*/
 
+@media only screen and ( min-width: 667px ) {
+  .images__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
 @media only screen and( min-width: 768px ) {
   .images__container {
     display: grid;
@@ -66,28 +81,61 @@
 
   .hero__gallery {
     display: flex;
+    width: 70%;
+    right: 50%;
+    top: -5%;
+    transform: translateX(50%);
   }
 
+  
   .hero--image {
     filter: blur(15px);
   }
   // .main__info {
-  //   width: 30%;
-  //   left: 0;
-  //   top: 30%;
-  // }
+    //   width: 30%;
+    //   left: 0;
+    //   top: 30%;
+    // }
+  }
+  
+  @media only screen and ( min-width: 1024px ) and ( min-height: 1366px ) {
+  .hero__gallery {
+    display: flex;
+    width: 90%;
+    right: 50%;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+  }
+}
+
+@media only screen and ( min-width: 1366px ) {
+  
+  .hero__gallery {
+    display: flex;
+    width: 90%;
+    right: 50%;
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+  }
+
 }
 
 @media only screen and ( min-width: 1680px ) {
   
   .hero__gallery {
-    width: 70%;
+    width: 100%;
+    
+    .img--gallery--active {
+      width: 50%;
+      height: 60rem;
+    }
   }
   
+  
   .main__info {
-    width: 30%;
-    left: 0;
-    top: 30%;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -99,7 +147,12 @@
 
   .hero__gallery {
     width: 70%;
+    .img--gallery--active {
+      width: 70%;
+      height: 120rem;
+    }
   }
+
   
 
 }
@@ -111,25 +164,38 @@
     height: 25rem;
   }
 }
+@media only screen and ( min-width: 1680px ) {
+  .small__card {
+    height: 40rem;
+  }
+}
 @media only screen and ( min-width: 1920px ) {
   .small__card {
-    height: 30rem;
+    // height: 3rem;
   }
 }
 
 /*MODAL*/
 
-@media only screen and ( min-width: 768px ) {
-  
-  .user__info {
-    justify-content: space-around;
-  }
+@media only screen and ( min-width: 667px ) {
+
   .photos__grid {
-    display: grid;
-    // background-color: grey;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+  .user__collections {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .user__info {
+    justify-content: space-around;
+  }
+}
+
+@media only screen and ( min-width: 768px ) {
+  
+  // .user__info {
+  //   justify-content: space-around;
+  // }
 
   .image__container {
     min-height: 200px;
@@ -177,5 +243,9 @@
 
   .collections {
     height: 40rem;
+  }
+
+  .modal__image .modal__image__container {
+    width: 60%;
   }
 }

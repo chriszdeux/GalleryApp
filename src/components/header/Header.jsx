@@ -6,6 +6,14 @@ import { DeskNavbar } from './DeskNavbar';
 import { MobileNavbar } from './MobileNavbar';
 import { AiFillCloseSquare as CloseIcon } from 'react-icons/ai';
 
+import { motion } from 'framer-motion';
+
+
+const variants = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 }
+}
+
 export const Header = () => {
   const { handleToggle, toggle } = useShowComponent()
   return (
@@ -27,7 +35,9 @@ export const Header = () => {
                 />
           }
         {
-          toggle && <MobileNavbar />
+          toggle && 
+          
+            <MobileNavbar />
         }
         
         {/* <MobileNavbar className="responsive"/> */}

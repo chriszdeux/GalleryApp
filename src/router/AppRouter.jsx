@@ -8,9 +8,12 @@ import {
 import { Header } from '../components/header/Header';
 import { Main } from '../components/main/Main';
 import { UserPage } from '../components/user-page/UserPage';
+import { AnimatePresence } from 'framer-motion';
+
 export const AppRouter = () => {
   return (
     <Router>
+      <AnimatePresence exitBeforeEnter>
       <Header />
       <Switch>
         <Route>
@@ -20,6 +23,7 @@ export const AppRouter = () => {
         </Route>
         </Route>
       </Switch>
+      </AnimatePresence>
     </Router>
   )
 }
