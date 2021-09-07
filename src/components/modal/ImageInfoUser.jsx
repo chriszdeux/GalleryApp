@@ -7,34 +7,46 @@ import { ModalImage } from './ModalImage';
 import { cleanup } from '@testing-library/react';
 import { useIncrementDecrement } from '../hooks/useIncrementDecrement';
 import { SliderControls } from '../utils/SliderControls';
+import { ModalImageUser } from './ModalImageUser';
 import { SliderControlsUser } from '../utils/SliderControlsUser';
+import { useFetchCollectionImages } from '../hooks/useFetchCollectionImages';
 
-export const ImageInfo = ( { values } ) => {
+export const ImageInfoUser = ( { values } ) => {
   // debugger
-  const { handleToggle, position, id} = values;
+  const { handleToggle, position, id, preview_photos } = values
+  const { setDataCollection, dataCollection:{ data, load } } = useContext(DataContext)
+  // debugger
+  // const { handleToggle, position, id, } = values;
   // const goToComponent = useRef(id)
   // const { handleToggle, data:{ urls, color, blur_hash, description, user, likes }, position} = values;
-  const { data } = useContext(DataContext )
-  const { color } = data[position] 
-  const [bgColor, setBgColor] = useState()
-  const {slider, increment, decrement} = useIncrementDecrement( position )
-
+  // const { data } = useContext(DataContext )
+  // const { color } = data[position] 
+  const { dataImagesCollection, loading } = useFetchCollectionImages( id )
+  useEffect(() => {
+    setDataCollection({
+      data: dataImagesCollection,
+      load: loading
+    })
+  }, [ dataImagesCollection ])
+  // debugger
+  // debugger
+  // const [dataCollection, setDataCollection] = useState({
+  //   data: dataImagesCollection,
+  //   load: loading
+  // })dataImagesCollection
+  
+  // const { data, load } = dataCollection
+  // const [bgColor, setBgColor] = useState()
+  const {slider, increment, decrement} = useIncrementDecrement( 0 )
 
   useEffect(() => {
-    setBgColor(color)
-  }, [ position ])
-  // const scrollComponent = () => {
-  //   window.scrollTo({
-  //     top: goToComponent.current.offsetTop,
-  //     behavior: 'smooth'
-  //   })
-  //   // debugger
-  // }
-  // useEffect(() => {
-  //   scrollComponent()
-  // }, [  ])
-  // const {slider, increment, decrement} = useIncrementDecrement()
-  const [imageComponent, setImageComponent] = useState(null)
+    // setDataCollection({
+    //   data: dataImagesCollection,
+    //   load: loading
+    // })
+  }, [ dataImagesCollection ])
+
+  // const [imageComponent, setImageComponent] = useState(null)
 
   const [animation, setAnimation] = useState(false)
 
@@ -55,9 +67,14 @@ export const ImageInfo = ( { values } ) => {
           <h3 className="username--profile">username</h3>
           </figure> */}
         {/* </div> */}
-        <div  className={`modal__image animate__animated animate__${ animation ? 'fadeInRight' : 'fadeInLeft' }`}>
-          <ModalImage slider={ slider } />
-        </div>
+          
+          {
+        !load &&
+          <div  className={`modal__image animate__animated animate__${ animation ? 'fadeInRight' : 'fadeInLeft' }`}>
+            <ModalImageUser values={{ data, slider }} />
+          </div>
+          }
+
         {/* <div  className="modal__image">
           {
             data.map(item => (
@@ -65,7 +82,10 @@ export const ImageInfo = ( { values } ) => {
             ))
           }
         </div> */}
+        {
+          !load &&
       <SliderControlsUser values={{ slider, increment, decrement, data }}/>
+        }
 
       </section>
   )

@@ -57,7 +57,7 @@ body {
 }
 
 .title {
-  @include titles($jumbo-size, $main-color);
+  @include titles($large-size, $main-color);
 }
 .sub--title {
   @include titles($large-size, $secondary-color);

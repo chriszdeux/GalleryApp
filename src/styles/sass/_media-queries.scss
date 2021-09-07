@@ -81,10 +81,16 @@
 
   .hero__gallery {
     display: flex;
-    width: 70%;
+    width: 90%;
+    height: 100vh;
     right: 50%;
-    top: -5%;
-    transform: translateX(50%);
+    top: 50%;
+    transform: translateX(50%) translateY(-50%);
+
+    .img--gallery--active {
+      width: 80%;
+      height: inherit;
+    }
   }
 
   
@@ -105,6 +111,10 @@
     right: 50%;
     top: 50%;
     transform: translateX(50%) translateY(-50%);
+  }
+
+  #main .slider__controls {
+    display: flex;
   }
 }
 

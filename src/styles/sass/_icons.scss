@@ -14,7 +14,11 @@
 
 .like--icon {
   @include icons();
-  
+  transition: .3s ease;
+}
+
+.like--icon:active {
+  transform: scale(1.1)
 }
 
 .dislike--icon {

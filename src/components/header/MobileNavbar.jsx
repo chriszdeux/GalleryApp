@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { HiMenuAlt3 as MenuIcon, HiOutlineSearch as SearchIcon  } from 'react-icons/hi';
 import { Link, NavLink } from 'react-router-dom';
 import { useShowComponent } from '../hooks/useShowComponent';
@@ -6,8 +6,10 @@ import { menuList } from './DeskNavbar';
 import { SearchForm } from './SearchForm';
 import { AiFillCloseSquare as CloseIcon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
+import { DataContext } from '../context/DataContext';
 
 export const MobileNavbar = () => {
+  const { favImages } = useContext(DataContext)
   const { handleToggle, toggle } = useShowComponent()
   return (
     // <div className="menu__dropdown container-10">
@@ -28,7 +30,7 @@ export const MobileNavbar = () => {
           </li>
           <li className="list--item">
           <NavLink exact to="/user-page" activeClassName="active">
-          My Favorites <span className="fav--counter">7</span>
+          My Favorites <span className="fav--counter">{ favImages.length + 1 }</span>
           </NavLink>
           </li>
           <li className="list--item">

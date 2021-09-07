@@ -1,1 +1,1 @@
-export const apiKey = '_epala6bzfchMcie￼￼AG_MshzIQo_8kapeQE5QRsfiw-g';
+export const apiKey = '_epala6bzfchMcieAG_MshzIQo_8kapeQE5QRsfiw-g';

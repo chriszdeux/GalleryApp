@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { DataContext } from '../context/DataContext'
 
 export const UserBio = () => {
+  const { dataUser } = useContext(DataContext)
+  const { username, name, twitter, portafolio, bio, location, instagram } = !!dataUser && dataUser
+
   return (
     <ul className="user__personal__info">
-      <li className="list--item">Joseph Joostar</li>
-      <li className="list--item">tokyio japan</li>
-      <li className="list--item">love animals and stands</li>
-      <li className="list--item">reach my work at www.joostar.com.jp</li>
+      <li className="list--item">{ username }</li>
+      <li className="list--item">{ name }</li>
+      <li className="list--item">{ location }</li>
+      <li className="list--item">{ bio }</li>
+      <li className="list--item">{ portafolio }</li>
+      <li className="list--item">{ instagram }</li>
+      <li className="list--item">{ twitter }</li>
     </ul>
   )
 }
