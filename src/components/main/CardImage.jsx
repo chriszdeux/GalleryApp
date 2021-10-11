@@ -6,13 +6,19 @@ import { DataContext } from '../context/DataContext';
 import { ImagesSubmit } from '../images-reducer/ImagesSubmit';
 
 export const CardImage = ({ data }) => {
-  const { urls } = data
-  const { dispatch } = useContext(DataContext)
+  const { urls:{ thumb, small, regular, full, raw } } = data
+  const { dispatch, mediaQueries } = useContext(DataContext);
+  const { tablet, tablet_hd, desk, desk_hd, full_hd } = mediaQueries
   const { handleAdd } = ImagesSubmit(data, dispatch)
   // debugger
   return (
     <figure className="small__card">
-      <LazyLoadImage effect="blur" className="small--image--card" src={ urls.regular_image } alt="" />
+      <picture>
+        <source media={ tablet_hd } srcSet={ regular } />
+        <source media={ desk_hd } srcSet={ full } />
+        <source media={ full_hd } srcSet={ raw } />
+      <LazyLoadImage effect="blur" className="small--image--card" src={ regular } alt="" />
+      </picture>
       {/* <div className="card--ribbon">New Photo</div> */}
       <div className="icons__buttons">
         <LikeIcon className="like--icon" onClick={ handleAdd }/>

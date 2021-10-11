@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react'
 import photo from '../../utils/temp/photo.jpg';
 // import '../utils/icons';
 import { AiFillCloseSquare as CloseIcon } from 'react-icons/ai'
@@ -37,7 +37,9 @@ export const ImageInfoUser = ( { values } ) => {
   
   // const { data, load } = dataCollection
   // const [bgColor, setBgColor] = useState()
-  const {slider, increment, decrement} = useIncrementDecrement( 0 )
+  const {slider, increment, decrement, animation} = useIncrementDecrement( 0 )
+  const memoIncrement = useMemo(() => increment, [slider])
+  const memoDecrement = useMemo(() => decrement, [slider])
 
   useEffect(() => {
     // setDataCollection({
@@ -48,10 +50,10 @@ export const ImageInfoUser = ( { values } ) => {
 
   // const [imageComponent, setImageComponent] = useState(null)
 
-  const [animation, setAnimation] = useState(false)
+  // const [animation, setAnimation] = useState(false)
 
   useEffect(() => {
-    setAnimation(!animation)
+    // setAnimation(!animation)
   }, [ position ])
 
   // debugger
@@ -70,8 +72,8 @@ export const ImageInfoUser = ( { values } ) => {
           
           {
         !load &&
-          <div  className={`modal__image animate__animated animate__${ animation ? 'fadeInRight' : 'fadeInLeft' }`}>
-            <ModalImageUser values={{ data, slider }} />
+          <div  className={`modal__image`}>
+            <ModalImageUser values={{ data, slider, animation }} />
           </div>
           }
 
@@ -84,7 +86,7 @@ export const ImageInfoUser = ( { values } ) => {
         </div> */}
         {
           !load &&
-      <SliderControlsUser values={{ slider, increment, decrement, data }}/>
+      <SliderControlsUser values={{ slider, increment, decrement, data, memoIncrement, memoDecrement }}/>
         }
 
       </section>

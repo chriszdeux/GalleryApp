@@ -337,6 +337,7 @@
 }
 
 .images__container {
+  overflow: hidden;
   margin-top: 5rem;
 }
 
@@ -453,7 +454,7 @@
   position: fixed;
   top: 5%;
   right: 5%;
-  z-index: inherit;
+  z-index: 2;
 }
 
 .bg__image {
@@ -574,8 +575,8 @@
 .photos__grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 5rem;
 }
@@ -587,7 +588,7 @@
 .image__container {
   position: relative;
   width: 100%;
-  height: 30rem;
+  height: 15rem;
   -webkit-box-shadow: 0 0 3px 3px #1818185e;
           box-shadow: 0 0 3px 3px #1818185e;
   opacity: 0.7;
@@ -597,6 +598,7 @@
 }
 
 .image__container .like--icon {
+  opacity: 0;
   position: absolute;
   right: 10%;
   bottom: 10%;
@@ -604,9 +606,11 @@
 
 .image__container:hover {
   opacity: 1;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
   z-index: 1;
+}
+
+.image__container:hover .like--icon {
+  opacity: 1;
 }
 
 .photo__info {
@@ -955,6 +959,15 @@
   }
 }
 
+@media only screen and (min-width: 1024px) {
+  .favorite__page .fav__image {
+    height: 20rem;
+  }
+  .favorite__page .fav__image .fav--image {
+    height: inherit;
+  }
+}
+
 .modal__image__info {
   width: 100%;
   height: 100vh;
@@ -1045,9 +1058,17 @@
 }
 
 .modal__image__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
   width: 95%;
-  height: 90vh;
   margin: 1rem auto;
   border-radius: 8px;
   overflow: hidden;
@@ -1055,13 +1076,12 @@
 
 .modal__image__container .modal--image {
   width: 100%;
-  height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
 .modal__image__container .image--description {
-  width: 100%;
+  width: 101%;
   height: 20rem;
   position: absolute;
   bottom: 0;
@@ -1149,6 +1169,45 @@
   position: absolute;
   font-size: 3rem;
   right: 3%;
+}
+
+#favorite__page {
+  width: 100%;
+  height: auto;
+  padding-top: 10rem;
+}
+
+.favorite__page {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.favorite__page .fav__image {
+  width: 100%;
+  min-height: 10rem;
+  overflow: hidden;
+}
+
+.favorite__page .fav__image .fav--image {
+  width: inherit;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.no--images {
+  font-size: 3rem;
+  color: #FFFFFF;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 * {

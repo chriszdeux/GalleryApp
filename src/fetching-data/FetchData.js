@@ -11,7 +11,7 @@ export const MainData = async ( initialPage = 1 ) => {
   // let counterPage = 1
   try {
     const response = await fetch(`${mainUrl}${initialPage}`);
-    const response2 = await fetch(`${mainUrl}${initialPage + 1}`);
+    const response2 = await fetch(`${mainUrl}${initialPage + 5}`);
     const data = await response.json()
     const data2 = await response2.json()
     // debugger
@@ -31,11 +31,11 @@ export const MainData = async ( initialPage = 1 ) => {
         likes: item.likes,
         created: item.created_at,
         urls: {
-          thumb_image: item.urls.thumb,
-          small_image: item.urls.small,
-          regular_image: item.urls.regular,
-          full_image: item.urls.full,
-          raw_image: item.urls.raw,
+          thumb: item.urls.thumb,
+          small: item.urls.small,
+          regular: item.urls.regular,
+          full: item.urls.full,
+          raw: item.urls.raw,
         },
         user: {
           id: item.user.id,

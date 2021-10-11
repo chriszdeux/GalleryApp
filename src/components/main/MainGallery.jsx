@@ -32,7 +32,7 @@ export const MainGallery = () => {
           data.map(data =>  
           (
             <>
-            <LazyLoadComponent>
+            <LazyLoadComponent key={data.id}>
               <Card 
                 // handleToggle={ handleToggle }
                 key={ data.id }

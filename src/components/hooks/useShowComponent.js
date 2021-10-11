@@ -2,10 +2,10 @@ import { useState } from "react"
 
 export const useShowComponent = ( value = false) => {
   const [showComponent, setShowComponent] = useState(value);
-  const [toggle, setToggle] = useState(value)
+  const [toggle, setToggle] = useState(false)
   // debugger
-  const handleShowComponent = (value) => {
-    setShowComponent(value);
+  const handleShowComponent = () => {
+    setShowComponent(!showComponent);
   }
 
   const handleToggle = () => {

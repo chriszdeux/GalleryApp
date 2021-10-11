@@ -89,20 +89,23 @@
   
 }
 .modal__image__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 95%;
-  height: 90vh;
+  // height: 90vh;
   margin: 1rem auto;
   border-radius: 8px;
   overflow: hidden;
 
   .modal--image {
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     object-fit: cover;
   }
   .image--description {
-    width: 100%;
+    width: 101%;
     height: 20rem;
     position: absolute;
     bottom: 0;

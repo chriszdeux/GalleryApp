@@ -1,0 +1,33 @@
+#favorite__page {
+  width: 100%;
+  height: auto;
+  padding-top: 10rem;
+}
+
+.favorite__page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+  .fav__image {
+    width: 100%;
+    min-height: 10rem;
+    overflow: hidden;
+
+    .fav--image {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+    }
+  }
+}
+
+.no--images {
+  font-size: $extra-large-size;
+  color: $main-color;
+  align-self: center;
+}

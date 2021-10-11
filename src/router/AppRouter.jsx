@@ -9,6 +9,7 @@ import { Header } from '../components/header/Header';
 import { Main } from '../components/main/Main';
 import { UserPage } from '../components/user-page/UserPage';
 import { AnimatePresence } from 'framer-motion';
+import { FavoritePage } from '../components/favorite-page/FavoritePage';
 
 export const AppRouter = () => {
   return (
@@ -16,12 +17,10 @@ export const AppRouter = () => {
       <AnimatePresence exitBeforeEnter>
       <Header />
       <Switch>
-        <Route>
         <Route exact path="/"component={ Main }>
         </Route>
-        <Route exact path="/user-page" component={ UserPage }>
-        </Route>
-        </Route>
+        <Route exact path="/favorite-page" component={ FavoritePage } / >
+        <Route exact path="/user-page" component={ UserPage }></Route>
       </Switch>
       </AnimatePresence>
     </Router>

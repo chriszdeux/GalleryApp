@@ -32,8 +32,11 @@ const mediaQueries = {
   full_hd: '(min-width: 2048px)',
 }
 
+const randomMainPage = Math.floor(Math.random() * 100);
+
+
 export const GalleryApp = () => {
-  const { data, loading } = useMainFetch();
+  const { data, loading } = useMainFetch(randomMainPage);
 
   const [userProfile, setUserProfile] = useState('')
   // debugger
@@ -52,7 +55,7 @@ export const GalleryApp = () => {
   useEffect(() => {
     localStorage.setItem('favImages', JSON.stringify(favImages))
   }, [ favImages ])
-
+  // debugger
 
   console.log(favImages)
   return (
@@ -69,7 +72,7 @@ export const GalleryApp = () => {
         dataCollection,
         setDataCollection,
         favImages,
-        dispatch 
+        dispatch, 
       }}
   >
       <AppRouter />

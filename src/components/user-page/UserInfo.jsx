@@ -4,6 +4,7 @@ import { StatsUser } from './StatsUser'
 import  photo  from '../../utils/temp/photo.jpeg'
 import { UserBio } from './UserBio'
 import { DataContext } from '../context/DataContext'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 export const UserInfo = () => {
   // debugger
   const { dataUser, userLoading } = useContext(DataContext)
@@ -15,7 +16,10 @@ export const UserInfo = () => {
     <>
     <div className="user__info">
       <figure className="user__picture">
-        <img className="user--picture--img" src={ medium } alt="" />
+        {
+          medium &&
+        <LazyLoadImage className="user--picture--img" src={ medium } alt="" />
+        }
       </figure>
       <StatsUser />
     </div>

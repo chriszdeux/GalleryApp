@@ -29,8 +29,8 @@ export const MobileNavbar = () => {
           </NavLink>
           </li>
           <li className="list--item">
-          <NavLink exact to="/user-page" activeClassName="active">
-          My Favorites <span className="fav--counter">{ favImages.length + 1 }</span>
+          <NavLink exact to="/favorite-page" activeClassName="active">
+          My Favorites <span className="fav--counter">{ favImages.length  }</span>
           </NavLink>
           </li>
           <li className="list--item">

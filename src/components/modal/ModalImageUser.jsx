@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 
 export const ModalImageUser = ({ values }) => {
-  const { slider, data } = values
+  const { slider, data, animation } = values
   // const { item:{ position, id, user:{ username } } } = values
   // debugger
   // const { position } = values
@@ -57,12 +57,12 @@ export const ModalImageUser = ({ values }) => {
       <figure
     // id={ username } 
     // ref={ goToComponent }
-    className="modal__image__container animate__animated animate__fadeInRight">
+    className={`modal__image__container `}>
       
 
       <LazyLoadImage 
         // effect="opacity"
-        className="modal--image" src={ urls.regular} alt="" />
+        className={`modal--image ${animation}`} src={ urls.regular} alt="" />
       {/* <h3 className="likes">likes: { likes } <LikeIcon className="like--icon"/></h3> */}
       {/* <LikeIcon /> */}
       {/* <figcaption 

@@ -11,6 +11,8 @@ import { Collections } from './Collections';
 import { useShowComponent } from '../hooks/useShowComponent';
 import { DataContext } from '../context/DataContext';
 import { useFetchUser } from '../hooks/useFetchUser';
+import { IoArrowBackSharp as BackIcon } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 export const UserPage = () => {
 
   const { showComponent, handleShowComponent } = useShowComponent(true);
@@ -20,8 +22,11 @@ export const UserPage = () => {
   // const {listPhotos} = data
   // debugger
   return (
-    <section className="modal">
-      <CloseIcon className="close--icon" />
+    <section className="modal animate__animated animate__fadeIn">
+      {/* <CloseIcon className="close--icon" /> */}
+      <Link to="/">
+        <BackIcon className="close--icon" />
+      </Link>
         
         {
           !userLoading &&
