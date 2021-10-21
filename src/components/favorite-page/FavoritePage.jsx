@@ -6,14 +6,22 @@ import { ModalFavImages } from './ModalFavImages'
 // import { ModalImageUser } from '../modal/ModalImageUser'
 // import { ModalFavImages } from './ModalFavImages'
 // ModalFavImages
-export const FavoritePage = () => {
-  const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd } } = useContext( DataContext )
+import Masonry from 'react-masonry-component'
+import { MyMasonry } from './MyMasonry'
+export const FavoritePage = (props) => {
+  const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions } } = useContext( DataContext )
   const [openModal, setOpenModal] = useState(false)
   const [data, setData] = useState([])
   const [slider, setSlider] = useState(0)
   // const {slider, increment, decrement} = useIncrementDecrement( currentPosition )
   // debugger
-
+  // const myProps = {
+  //   fitWidth: false,
+  //   columnWidth: 300,
+  //   gutter: 30,
+  //   itemSelector: 'photo-item',
+  // }
+  // debugger
   useEffect(() => {
     setData(favImages)
   }, [ favImages ])
@@ -32,34 +40,18 @@ export const FavoritePage = () => {
   // debugger
   return (
     <>
-    <section id="favorite__page">
+    <section id="favorite__page" className="container-9">
     <h2 className="no--images">{ favImages.length > 0 ? `Favorite images: ${favImages.length}` : 'No Images' }</h2>
-      <div className="favorite__page">
-      {
-        favImages.length > 0 &&  favImages.map((item, index) => (
-           
-          <figure
-            key={ item.id }
-            className="fav__image"
-            onClick={ () => handleOpenModal(index) }
-          >
-            <picture>
-              <source media={ desk } srcSet={ item.urls.regular } />
-              <source media={ desk_hd } srcSet={ item.urls.full } />
-              <source media={ tablet_hd } srcSet={ item.urls.regular } />
-            </picture>
-            <LazyLoadImage className="fav--image"  src={ item.urls.regular } alt={ item.alt_description } />
-          </figure>
-
-          ))
-      }
-
-      </div>
+      <MyMasonry 
+      // columnCount="2"
+      // gap="5"
+      favImages= {favImages} 
+      />
     </section>
-    {
+    {/* {
       openModal &&
       <ModalFavImages values={{ slider, data, handleOpenModal }}/>
-    }
+    } */}
   </>
   )
 }

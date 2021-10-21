@@ -27,16 +27,16 @@ export const MainGallery = () => {
   // debugger
   return (
     <>
-      <section className="images__container">
+      <section className="images__container container-9">
         {
-          data.map(data =>  
+          data.map((data, index) =>  
           (
             <>
             <LazyLoadComponent key={data.id}>
               <Card 
                 // handleToggle={ handleToggle }
                 key={ data.id }
-                data={ data}
+                values={{ data, index }}
                 // data={ data }
                 // onClick={ handleToggle }
                 />

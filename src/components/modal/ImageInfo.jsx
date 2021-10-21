@@ -11,28 +11,29 @@ import { SliderControlsUser } from '../utils/SliderControlsUser';
 
 export const ImageInfo = ( { values } ) => {
   // debugger
-  const { handleToggle, position, id} = values;
+  const { handleToggle, index, id} = values;
   // const goToComponent = useRef(id)
   // const { handleToggle, data:{ urls, color, blur_hash, description, user, likes }, position} = values;
-  const { data } = useContext(DataContext )
-  const { color } = data[position] 
+  const { data, transitionAnimation } = useContext(DataContext )
+  const { color } = data[index] 
   const [bgColor, setBgColor] = useState()
   const myRef = useRef()
   const [component, setComponent] = useState()
-  const [entranceAnimations, setEntranceAnimations] = useState({
-    fade_in: 'animate__animated animate__fadeIn',
-    fade_out: 'animate__animated animate__fadeOut',
-    fade_up: 'animate__animated animate__fadeInUp',
-    fade_down: 'animate__animated animate__fadeIn',
-    fade_left: 'animate__animated animate__fadeInLeft',
-    fade_right: 'animate__animated animate__fadeInRight',
-  })
+  // debugger
+  // const [entranceAnimations, setEntranceAnimations] = useState({
+  //   fade_in: 'animate__animated animate__fadeIn',
+  //   fade_out: 'animate__animated animate__fadeOut',
+  //   fade_up: 'animate__animated animate__fadeInUp',
+  //   fade_down: 'animate__animated animate__fadeIn',
+  //   fade_left: 'animate__animated animate__fadeInLeft',
+  //   fade_right: 'animate__animated animate__fadeInRight',
+  // })
 
-  const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = entranceAnimations
+  const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = transitionAnimation
 
-  const {slider, increment, decrement, animation} = useIncrementDecrement( position )
-  const memoIncrement = useMemo(() => increment, [ slider ])
-  const memoDecrement = useMemo(() => decrement, [ slider ])
+  const {slider, increment, decrement, animation, memoNextImage, memoPrevImage} = useIncrementDecrement( index )
+  // const memoIncrement = useMemo(() => increment, [ slider ])
+  // const memoDecrement = useMemo(() => decrement, [ slider ])
   // useEffect(() => {
   //   setComponent(
   //     // <div  className={`modal__image $`} ref={ myRef }>
@@ -68,7 +69,7 @@ export const ImageInfo = ( { values } ) => {
 
   useEffect(() => {
     setBgColor(color)
-  }, [ position ])
+  }, [ index ])
   // const scrollComponent = () => {
   //   window.scrollTo({
   //     top: goToComponent.current.offsetTop,
@@ -87,8 +88,10 @@ export const ImageInfo = ( { values } ) => {
   // useEffect(() => {
   //   setAnimation(!animation)
   // }, [ position ])
+  // if(animation !== undefined) {
+  //   debugger
 
-  // debugger
+  // }
   return (
     <section className={`modal__image__info ${fade_in}`}  >
       <CloseIcon 
@@ -113,7 +116,7 @@ export const ImageInfo = ( { values } ) => {
             ))
           }
         </div> */}
-      <SliderControlsUser values={{ slider, increment, decrement, data, memoIncrement, memoDecrement }}/>
+      <SliderControlsUser values={{ slider, increment, decrement, data, memoNextImage, memoPrevImage }}/>
 
       </section>
   )

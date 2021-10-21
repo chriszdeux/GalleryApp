@@ -5,6 +5,7 @@ import { SliderControls } from '../utils/SliderControls';
 import { useIncrementDecrement } from '../hooks/useIncrementDecrement';
 import { Link } from 'react-router-dom';
 import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
+import { FiDelete as DeleteIcon } from 'react-icons/fi';
 
 export const ModalImageUser = ({ values }) => {
   const { slider, data, animation } = values
@@ -70,6 +71,7 @@ export const ModalImageUser = ({ values }) => {
         style={{ borderTop: `3px solid ${color}` }}
       >{ description }</figcaption> */}
       <h2 className="image--position">{ slider + 1 } / { data.length }</h2>
+      <DeleteIcon className="delete--icon"/>
     </figure>
     </>
   )

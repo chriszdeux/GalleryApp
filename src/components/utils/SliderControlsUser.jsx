@@ -5,7 +5,7 @@ import { useIncrementDecrement } from '../hooks/useIncrementDecrement'
 
 
 export const SliderControlsUser = ( { values } ) => {
-  const {slider, increment, decrement, data, handleEntranceAnimation, memoIncrement, memoDecrement} = values
+  const {slider, increment, decrement, data, handleEntranceAnimation, memoNextImage, memoPrevImage} = values
   // const { increment, decrement } = useIncrementDecrement()
   // debugger
   // useEffect(() => {
@@ -17,14 +17,14 @@ export const SliderControlsUser = ( { values } ) => {
         slider > 0 &&
         <Left 
           className="left--icon"
-          onClick={ memoDecrement } 
+          onClick={ memoPrevImage } 
         />
       }
       {
         slider < data.length - 1  &&
         <Right 
           className="right--icon"
-          onClick={ memoIncrement } 
+          onClick={ memoNextImage } 
         />
       }
     </div>

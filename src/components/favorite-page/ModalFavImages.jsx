@@ -15,14 +15,15 @@ import { ModalImageUser } from '../modal/ModalImageUser';
 
 export const ModalFavImages = ( { values } ) => {
   // ModalImageUser
- const { slider:currentPosition, data, handleOpenModal } = values
- const { slider, increment, decrement} = useIncrementDecrement( currentPosition )
+ const { sliderPosition, favImages:data, handleModalPosition } = values;
+ 
+ const { slider, increment, decrement, memoNextImage, memoPrevImage, animation} = useIncrementDecrement( sliderPosition )
   // <ModalImage
   return (
     <section className="modal__image__info"  >
       <CloseIcon 
         className="close--icon"
-        onClick={ handleOpenModal }
+        onClick={ handleModalPosition }
       />
         {/* <div className="username"> */}
           {console.log('changed')/* <figure className="username__profile__image">
@@ -33,7 +34,7 @@ export const ModalFavImages = ( { values } ) => {
           
           {
           <div  className={`modal__image`}>
-            <ModalImageUser values={{ data, slider }} />
+            <ModalImageUser values={{ data, slider, animation }} />
           </div>
           }
 
@@ -46,7 +47,7 @@ export const ModalFavImages = ( { values } ) => {
         </div> */}
         {
           
-      <SliderControlsUser values={{ slider, increment, decrement, data }}/>
+      <SliderControlsUser values={{ slider, increment, decrement, data, memoNextImage, memoPrevImage }}/>
         }
 
       </section>

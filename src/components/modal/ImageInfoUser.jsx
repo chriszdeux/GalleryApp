@@ -37,9 +37,7 @@ export const ImageInfoUser = ( { values } ) => {
   
   // const { data, load } = dataCollection
   // const [bgColor, setBgColor] = useState()
-  const {slider, increment, decrement, animation} = useIncrementDecrement( 0 )
-  const memoIncrement = useMemo(() => increment, [slider])
-  const memoDecrement = useMemo(() => decrement, [slider])
+  const {slider, increment, decrement, animation, memoNextImage, memoPrevImage} = useIncrementDecrement( 0 )
 
   useEffect(() => {
     // setDataCollection({
@@ -86,7 +84,7 @@ export const ImageInfoUser = ( { values } ) => {
         </div> */}
         {
           !load &&
-      <SliderControlsUser values={{ slider, increment, decrement, data, memoIncrement, memoDecrement }}/>
+      <SliderControlsUser values={{ slider, increment, decrement, data, memoPrevImage, memoNextImage }}/>
         }
 
       </section>

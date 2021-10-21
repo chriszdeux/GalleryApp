@@ -1,22 +1,21 @@
-import { useContext, useState } from "react"
+import { useContext, useMemo, useState } from "react"
 import { DataContext } from "../context/DataContext"
 import { React } from 'react'
 export const useIncrementDecrement = ( initialState = 0, component ) => {
-  const { data } = useContext(DataContext)
+  const { data, transitionAnimation } = useContext(DataContext)
+  const { fade_in,
+          fade_out,
+          fade_up,
+          fade_down,
+          fade_left,
+          fade_right, } = transitionAnimation;
   const [slider, setSlider] = useState(initialState)
-  const [entranceAnimations, setEntranceAnimations] = useState({
-    fade_in: 'animate__animated animate__fadeIn',
-    fade_out: 'animate__animated animate__fadeOut',
-    fade_up: 'animate__animated animate__fadeInUp',
-    fade_down: 'animate__animated animate__fadeIn',
-    fade_left: 'animate__animated animate__fadeInLeft',
-    fade_right: 'animate__animated animate__fadeInRight',
-  })
+  // const [entranceAnimations, setEntranceAnimations] = useState()
   console.log('calling again')
   // debugger
   const [animation, setAnimation] = useState()
   const [animateComponent, setAnimateComponent] = useState()
-  const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = entranceAnimations
+  // const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = entranceAnimations
   // debugger
   const increment = (  ) => {
     setSlider(slider + 1)
@@ -45,6 +44,9 @@ export const useIncrementDecrement = ( initialState = 0, component ) => {
       
       }, 1000);
     }
+    // debugger
+    const memoNextImage = useMemo(() => increment, [slider])
+    const memoPrevImage = useMemo(() => decrement, [slider])
   
-  return { increment, decrement, slider, animation, animateComponent }
+  return { increment, decrement, slider, animation, animateComponent, memoNextImage, memoPrevImage }
 }

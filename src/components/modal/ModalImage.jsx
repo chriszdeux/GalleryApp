@@ -12,6 +12,7 @@ export const ModalImage = React.memo (({ values }) => {
   // debugger
   // const { position } = values
   // debugger
+  const { transitionAnimation:{ fade_in } } = useContext(DataContext)
   const { data, setUserProfile, dispatch } = useContext(DataContext)
   // const { slider, increment, decrement } = useIncrementDecrement(position)
   // const { position } = item
@@ -19,7 +20,10 @@ export const ModalImage = React.memo (({ values }) => {
 
   const { handleAdd } = ImagesSubmit(data[slider], dispatch)
   console.log(`showing more again`)
-  // debugger
+  // if(animation !== undefined) {
+  //   debugger
+
+  // }
   return (
     <>
     <figure
@@ -27,16 +31,17 @@ export const ModalImage = React.memo (({ values }) => {
     // ref={ goToComponent }
     className={`modal__image__container ${animation}`}>
       <Link to='./user-page'>
-      <div 
-        className="user__name"
-        onClick={ () => setUserProfile(user.username) }
-      >
-        <img 
-          style={{ border: `3px solid ${color}` }}
-          className="username--profile--image" src={ user.profile_image.medium } alt="" />
-        <h3 className="username--profile">{ user.username }</h3>
-      </div>
-        </Link>
+        <div 
+          className={ `user__name ${fade_in}` }
+          onClick={ () => setUserProfile(user.username) }
+          // style={{ animationDelay: '1s ease' }}
+        >
+          <img 
+            style={{ border: `3px solid ${color}` }}
+            className="username--profile--image" src={ user.profile_image.medium } alt="" />
+          <h3 className="username--profile">{ user.username }</h3>
+        </div>
+      </Link>
 
       <img className={`modal--image ${animation}`} src={ urls.regular } alt="" />
       <h3 className="likes">likes: { likes } <LikeIcon  onClick={ handleAdd } className="like--icon"/></h3>

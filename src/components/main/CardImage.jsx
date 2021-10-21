@@ -13,7 +13,7 @@ export const CardImage = ({ data }) => {
   // debugger
   return (
     <figure className="small__card">
-      <picture>
+      <picture className="image__resolution__selection">
         <source media={ tablet_hd } srcSet={ regular } />
         <source media={ desk_hd } srcSet={ full } />
         <source media={ full_hd } srcSet={ raw } />

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { BiDislike as DislikeIcon, BiLike as LikeIcon  } from 'react-icons/bi';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import  photo  from "../../utils/temp/photo.jpeg";
 import { DataContext } from '../context/DataContext';
@@ -13,7 +14,7 @@ export const ImageContainer = ({item}) => {
   const { handleShowComponent, showComponent } = useShowComponent()
   return (
     <figure className="image__container" >
-      <img className="grid--image" src={ regular } alt={ created_at } />
+      <LazyLoadImage className="image" src={ regular } alt={ created_at } />
       <LikeIcon 
         className="like--icon"
         onClick={ handleAdd }

@@ -1,31 +1,46 @@
 #favorite__page {
-  width: 100%;
+  // width: 100%;
   height: auto;
   padding-top: 10rem;
 }
 
 .favorite__page {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  width: 95%;
-  height: auto;
-  margin: 0 auto;
-  margin-top: 2rem;
+  width: 90%;
+  list-style: none;
+  margin: 20px auto;
 
-  .fav__image {
+}
+
+.fav__image {
+position: relative;
+cursor: pointer;
+// border: 1px solid red;
+//   display: flex;
+// width: 300px;
+// box-shadow: 0 5px 10px rgba(0, 0, 0, .12);
+// margin: 20px 0;
+
+  .fav--image {
+    display: block;
     width: 100%;
-    min-height: 10rem;
-    overflow: hidden;
+    // border: 4px double rgba(0, 0, 0, .12);
 
-    .fav--image {
-      width: inherit;
-      height: inherit;
-      object-fit: cover;
-    }
+  }
+
+  .delete--icon {
+    // visibility: hidden;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    transition: .5s ease;
+    opacity: 0;
   }
 }
 
+.fav__image:hover .delete--icon {
+  opacity: 1;
+  // visibility: visible;
+}
 .no--images {
   font-size: $extra-large-size;
   color: $main-color;

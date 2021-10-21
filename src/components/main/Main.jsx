@@ -44,7 +44,7 @@ export const Main = () => {
   // debugger
   // FetchUser('xps')
   useEffect(() => {
-    setAnimation(fade_left)
+    setAnimation(fade_in)
     setAnimation2(fade_in)
     setTimeout(() => {
       setAnimation('')
@@ -73,7 +73,7 @@ export const Main = () => {
           {/* <source media={ mediaQueries.tablet } srcSet={ data[currentPosition].urls.regular } /> */}
           <source media={ mediaQueries.tablet_hd } srcSet={ data[currentPosition].urls.regular } />
           <source media={ mediaQueries.desk_hd } srcSet={ data[currentPosition].urls.full } />
-            <img className="hero--image" src={ data[currentPosition].urls.small } alt="" />
+            <img className="hero--image" src={ data[currentPosition].urls.regular } alt="" />
         </picture>
       </figure>
       

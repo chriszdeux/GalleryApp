@@ -11,18 +11,18 @@ export const MainData = async ( initialPage = 1 ) => {
   // let counterPage = 1
   try {
     const response = await fetch(`${mainUrl}${initialPage}`);
-    const response2 = await fetch(`${mainUrl}${initialPage + 5}`);
+    // const response2 = await fetch(`${mainUrl}${initialPage + 5}`);
     const data = await response.json()
-    const data2 = await response2.json()
+    // const data2 = await response2.json()
     // debugger
-    const mixData = [...data, ...data2]
+    // const mixData = [...data]
     // debugger
-    
-    const fullData = mixData.map((item, index) => {
+    let temp = 0
+    const fullData = data.map((item, index) => {
       // debugger
       return {
         // next_page: counterPage + 1,
-        position: index, 
+        // position: temp++, 
         id: item.id,
         color: item.color,
         blur_hash: item.blur_hash,

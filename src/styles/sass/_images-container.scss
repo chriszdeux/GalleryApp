@@ -1,8 +1,11 @@
 // @import 'variables';
 
 .images__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   overflow: hidden;
-  margin-top: 5rem;
+  margin: 5rem 0;
 }
 
 @mixin cards($width, $height) {
@@ -19,36 +22,81 @@
 }
 
 .card {
-  width: 90%;
-  height: auto;
+  width: 100%;
+  height: 15rem;
   margin: 0 auto;
-  margin-bottom: 5rem
+  opacity: .9;
+  transition: .3s ease-in
+  // margin-bottom: 5rem
 
 }
 
 .small__card {
-  @include cards(100%, $height-small-card );
+  @include cards(100%, inherit);
   overflow: hidden;
   position: relative;
   background-color: $header-color;
-  margin-bottom: 2rem;
-  transition: .3s ease;
-}
+  // margin-bottom: 2rem;
+  transition: .1s ease;
 
-.small__card:hover {
-  transform: scale(1.1);
-}
 
-.small__card:hover ~ .image__info {
-  padding: 1rem ;
-  border: 1px solid $main-color;
-}
-
-.small--image--card {
-  width: 100%;
+  .image__resolution__selection {
+    width: inherit;
     height: inherit;
-    object-fit: cover;
+    .lazy-load-image-background.blur.lazy-load-image-loaded {
+      width: 100%;
+      height: inherit;
+      cursor: pointer;
+    }
+    .lazy-load-image-background.blur.lazy-load-image-loaded > .small--image--card {
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+    }
+  }
+
+  
+
+  // .lazy-load-image-loaded {
+  //   width: inherit;
+  //   height: inherit;
+  //     // .small--image--card {
+  //     //   width: inherit;
+  //     //   height: inherit;
+  //     //   object-fit: cover;
+  //     // }
+  // }
+  // picture {
+  //   width: inherit;
+  //   height: inherit;
+
+  // }
 }
+
+
+.card:active {
+  opacity: .7;
+  transform: scale(.98);
+}
+
+.card:hover {
+  opacity: 1;
+  // border: 1px solid $main-color;
+}
+// .small__card:hover {
+//   transform: scale(1.1);
+// }
+
+// .small__card:hover ~ .image__info {
+//   padding: 1rem ;
+//   border: 1px solid $main-color;
+// }
+
+// .small--image--card {
+//   width: 100%;
+//     height: inherit;
+//     object-fit: cover;
+// }
 
 .image__info {
   position: relative;

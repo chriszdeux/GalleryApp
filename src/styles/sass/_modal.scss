@@ -143,14 +143,16 @@
 }
 
 .image__container {
+  display: flex;
+  align-items: center;
   position: relative;
   width: 100%;
-  height: 15rem;
+  // height: 15rem;
   // height: auto;
-  box-shadow: $shadow-cards;
+  // box-shadow: $shadow-cards;
   opacity: 0.7;
   transition: ease .3s;
-  background-color: $secondary-color;
+  // background-color: $secondary-color;
   .like--icon {
     opacity: 0;
     position: absolute;
@@ -163,6 +165,7 @@
 .image__container:hover {
   opacity: 1;
   // transform: scale(1.1);
+  // border: 1px solid $secondary-color;
   z-index: 1;
   // margin: 2rem 0;
 }

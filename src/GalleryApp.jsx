@@ -32,12 +32,34 @@ const mediaQueries = {
   full_hd: '(min-width: 2048px)',
 }
 
+const transitionAnimation = {
+  fade_in: 'animate__animated animate__fadeIn',
+    fade_out: 'animate__animated animate__fadeOut',
+    fade_up: 'animate__animated animate__fadeInUp',
+    fade_down: 'animate__animated animate__fadeIn',
+    fade_left: 'animate__animated animate__fadeInLeft',
+    fade_right: 'animate__animated animate__fadeInRight',
+}
+
 const randomMainPage = Math.floor(Math.random() * 100);
 
 
 export const GalleryApp = () => {
-  const { data, loading } = useMainFetch(randomMainPage);
-
+  const { data, loading } = useMainFetch(1);
+  
+  const masonryOptions = {
+    fitWidth: false,
+    columnWidth: 300,
+    gutter: 30,
+    itemSelector: ".photo-item",
+    containerStyle: { 
+      display: 'flex',
+      justifyContent: 'center'
+     },
+     transitionDuration: 2,
+     percentPosition: 50,
+  };
+  
   const [userProfile, setUserProfile] = useState('')
   // debugger
   const  {data: dataUser, loading: userLoading} = useFetchUser(userProfile);
@@ -73,6 +95,8 @@ export const GalleryApp = () => {
         setDataCollection,
         favImages,
         dispatch, 
+        masonryOptions,
+        transitionAnimation
       }}
   >
       <AppRouter />
