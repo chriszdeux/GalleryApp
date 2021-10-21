@@ -12,6 +12,7 @@ export const FetchUser = async ( user ) => {
       const response = await fetch(url);
       const response2 =  await fetch(urlPhotos);
       const response3 = await fetch(urlCollections)
+      
       const { id, updated_at:updated, username, name, twitter_username:twitter, portafolio_url:portafolio, bio, location, instagram_username:instagram, total_collections, total_photos, total_likes, photos, profile_image } = await response.json();
       
       const data = await response2.json();
@@ -22,8 +23,10 @@ export const FetchUser = async ( user ) => {
 
       // const urlCollectionPhoto = `https://api.unsplash.com/collections/${}/photos?client_id=_epala6bzfchMcieAG_MshzIQo_8kapeQE5QRsfiw-g&per_page=30`;
       const listPhotos = data.map((item, index) => {
+        // debugger
         return {
           id: item.id,
+          user: item.user,
           created: item.created_at,
           blur_hash: item.blur_hash,
           description: item.alt_description,

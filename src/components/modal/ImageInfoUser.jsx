@@ -14,7 +14,7 @@ import { useFetchCollectionImages } from '../hooks/useFetchCollectionImages';
 export const ImageInfoUser = ( { values } ) => {
   // debugger
   const { handleToggle, position, id, preview_photos } = values
-  const { setDataCollection, dataCollection:{ data, load } } = useContext(DataContext)
+  const { setDataCollection, dataCollection:{ data, load }, handleData, handleEachData } = useContext(DataContext)
   // debugger
   // const { handleToggle, position, id, } = values;
   // const goToComponent = useRef(id)
@@ -22,12 +22,17 @@ export const ImageInfoUser = ( { values } ) => {
   // const { data } = useContext(DataContext )
   // const { color } = data[position] 
   const { dataImagesCollection, loading } = useFetchCollectionImages( id )
+  
+  useEffect(() => {
+    handleEachData(dataImagesCollection)
+  }, [ dataImagesCollection ])
+  
   useEffect(() => {
     setDataCollection({
-      data: dataImagesCollection,
+      data: handleData,
       load: loading
     })
-  }, [ dataImagesCollection ])
+  }, [ handleData ])
   // debugger
   // debugger
   // const [dataCollection, setDataCollection] = useState({
@@ -84,7 +89,7 @@ export const ImageInfoUser = ( { values } ) => {
         </div> */}
         {
           !load &&
-      <SliderControlsUser values={{ slider, increment, decrement, data, memoPrevImage, memoNextImage }}/>
+      <SliderControls values={{ slider, increment, decrement, data, memoPrevImage, memoNextImage }}/>
         }
 
       </section>

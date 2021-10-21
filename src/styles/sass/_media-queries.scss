@@ -207,12 +207,19 @@
   //   justify-content: space-around;
   // }
 
+  .small__card {
+    height: 30rem;
+  }
+
   .image__container {
     // min-height: 200px;
   }
 }
 @media only screen and ( min-width: 1024px ) {
 
+  .small__card {
+    height: 25rem;
+  }
   .user__stats {
     width: 30%;
   }

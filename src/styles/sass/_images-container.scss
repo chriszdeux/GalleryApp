@@ -26,13 +26,15 @@
   height: 15rem;
   margin: 0 auto;
   opacity: .9;
-  transition: .3s ease-in
+  transition: .3s ease-in;
   // margin-bottom: 5rem
+
+  
 
 }
 
 .small__card {
-  @include cards(100%, inherit);
+  @include cards(100%, 15rem);
   overflow: hidden;
   position: relative;
   background-color: $header-color;

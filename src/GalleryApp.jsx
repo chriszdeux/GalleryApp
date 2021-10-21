@@ -45,7 +45,7 @@ const randomMainPage = Math.floor(Math.random() * 100);
 
 
 export const GalleryApp = () => {
-  const { data, loading } = useMainFetch(1);
+  const { data, loading } = useMainFetch();
   
   const masonryOptions = {
     fitWidth: false,
@@ -63,6 +63,7 @@ export const GalleryApp = () => {
   const [userProfile, setUserProfile] = useState('')
   // debugger
   const  {data: dataUser, loading: userLoading} = useFetchUser(userProfile);
+  
   const [dataCollection, setDataCollection] = useState({
     data: [],
     load: true
@@ -78,8 +79,12 @@ export const GalleryApp = () => {
     localStorage.setItem('favImages', JSON.stringify(favImages))
   }, [ favImages ])
   // debugger
+  const [handleData, setHandleData] = useState()
 
-  console.log(favImages)
+  const handleEachData = ( data ) => {
+    setHandleData(data)
+  }
+  // console.log(favImages)
   return (
     <>
     <DataContext.Provider 
@@ -96,7 +101,9 @@ export const GalleryApp = () => {
         favImages,
         dispatch, 
         masonryOptions,
-        transitionAnimation
+        transitionAnimation,
+        handleData, 
+        handleEachData
       }}
   >
       <AppRouter />

@@ -8,7 +8,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 export const MainGallery = () => {
   // debugger
   const [currentValue, setCurrentValue] = useState(0)
-  const { data } = useContext( DataContext )
+  const { data, loading, handleData, handleEachData } = useContext( DataContext )
   const [newData, setNewData] = useState([])
   const goToComponent = useRef(null)
   // const addCurrentValue = ( data ) => {
@@ -20,16 +20,17 @@ export const MainGallery = () => {
   //     }])
   //   })
   // }
-  // useEffect(() => {
-  //   addCurrentValue()
-  // }, [ data ])
+  // debugger
+  useEffect(() => {
+    handleEachData(data)
+  }, [ data ])
 
   // debugger
   return (
     <>
       <section className="images__container container-9">
         {
-          data.map((data, index) =>  
+          !!handleData && handleData.map((data, index) =>  
           (
             <>
             <LazyLoadComponent key={data.id}>

@@ -14,84 +14,27 @@ export const ImageInfo = ( { values } ) => {
   const { handleToggle, index, id} = values;
   // const goToComponent = useRef(id)
   // const { handleToggle, data:{ urls, color, blur_hash, description, user, likes }, position} = values;
-  const { data, transitionAnimation } = useContext(DataContext )
-  const { color } = data[index] 
+  useEffect(() => {
+
+  })
+  const { handleData, transitionAnimation } = useContext(DataContext )
+  // debugger
+  const { color } = handleData[index] 
   const [bgColor, setBgColor] = useState()
   const myRef = useRef()
   const [component, setComponent] = useState()
-  // debugger
-  // const [entranceAnimations, setEntranceAnimations] = useState({
-  //   fade_in: 'animate__animated animate__fadeIn',
-  //   fade_out: 'animate__animated animate__fadeOut',
-  //   fade_up: 'animate__animated animate__fadeInUp',
-  //   fade_down: 'animate__animated animate__fadeIn',
-  //   fade_left: 'animate__animated animate__fadeInLeft',
-  //   fade_right: 'animate__animated animate__fadeInRight',
-  // })
 
   const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = transitionAnimation
 
   const {slider, increment, decrement, animation, memoNextImage, memoPrevImage} = useIncrementDecrement( index )
-  // const memoIncrement = useMemo(() => increment, [ slider ])
-  // const memoDecrement = useMemo(() => decrement, [ slider ])
-  // useEffect(() => {
-  //   setComponent(
-  //     // <div  className={`modal__image $`} ref={ myRef }>
-  //     //   <ModalImage values={ {slider, animation} } />
-  //     // </div>
-  //     <h1>HELLO</h1>
-  //   )
-  //   return () => {
-  //     cleanup()
-  //   }
-  // }, [  ])
-  // debugger
-  // const [entranceAnimations, setEntranceAnimations] = useState({
-  //   fade_in: 'animate__animated animate__fadeIn',
-  //   fade_out: 'animate__animated animate__fadeOut',
-  //   fade_up: 'animate__animated animate__fadeInUp',
-  //   fade_down: 'animate__animated animate__fadeIn',
-  // })
-  // const { fade_in, fade_out, fade_up, fade_down } = entranceAnimations
 
-  // const [animation, setAnimation] = useState()
-  // const [animateComponent, setAnimateComponent] = useState()
-  
-  // const handleEntranceAnimation = () => {
-  //   setAnimation(fade_out)
-  // }
-  
-  // const handleExitAnimation = () => {
-  //   setTimeout(() => {
-  //     setAnimation(fade_out)
-  //   }, .300);
-  // }
 
   useEffect(() => {
     setBgColor(color)
   }, [ index ])
-  // const scrollComponent = () => {
-  //   window.scrollTo({
-  //     top: goToComponent.current.offsetTop,
-  //     behavior: 'smooth'
-  //   })
-  //   // debugger
-  // }
-  // useEffect(() => {
-  //   scrollComponent()
-  // }, [  ])
-  // const {slider, increment, decrement} = useIncrementDecrement()
+  
   const [imageComponent, setImageComponent] = useState(null)
-
-  // const [animation, setAnimation] = useState(false)
-
-  // useEffect(() => {
-  //   setAnimation(!animation)
-  // }, [ position ])
-  // if(animation !== undefined) {
-  //   debugger
-
-  // }
+  // debugger
   return (
     <section className={`modal__image__info ${fade_in}`}  >
       <CloseIcon 
@@ -116,7 +59,7 @@ export const ImageInfo = ( { values } ) => {
             ))
           }
         </div> */}
-      <SliderControlsUser values={{ slider, increment, decrement, data, memoNextImage, memoPrevImage }}/>
+      <SliderControlsUser values={{ slider, increment, decrement, handleData, memoNextImage, memoPrevImage }}/>
 
       </section>
   )

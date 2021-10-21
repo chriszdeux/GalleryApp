@@ -15,15 +15,15 @@ export const Card = ({ values }) => {
   
   return (
     <>
-    <article 
+    {/* <article 
 
       id={ id }
       className="card"
       onClick={ handleToggle }
-    >
-      <CardImage data={ data }/>
+    > */}
+      <CardImage values={ {data, index} }/>
       {/* <CardImageInfo data={ data }/> */}
-    </article>
+    {/* </article> */}
     {
       toggle && <ImageInfo values={ {handleToggle, index, id } }/>
     }

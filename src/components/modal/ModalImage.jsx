@@ -13,12 +13,14 @@ export const ModalImage = React.memo (({ values }) => {
   // const { position } = values
   // debugger
   const { transitionAnimation:{ fade_in } } = useContext(DataContext)
-  const { data, setUserProfile, dispatch } = useContext(DataContext)
+  const { handleData, setUserProfile, dispatch } = useContext(DataContext)
+  // debugger
   // const { slider, increment, decrement } = useIncrementDecrement(position)
   // const { position } = item
-  const { urls, color, blur_hash, description, user, likes } = data[slider]
-
-  const { handleAdd } = ImagesSubmit(data[slider], dispatch)
+  // debugger
+  const { urls, color, blur_hash, description, user, likes } = !!handleData && handleData[slider]
+  // debugger
+  const { handleAdd } = ImagesSubmit(handleData[slider], dispatch)
   console.log(`showing more again`)
   // if(animation !== undefined) {
   //   debugger
@@ -26,6 +28,8 @@ export const ModalImage = React.memo (({ values }) => {
   // }
   return (
     <>
+    {
+      handleData !== undefined &&
     <figure
     // id={ username } 
     // ref={ goToComponent }
@@ -35,7 +39,7 @@ export const ModalImage = React.memo (({ values }) => {
           className={ `user__name ${fade_in}` }
           onClick={ () => setUserProfile(user.username) }
           // style={{ animationDelay: '1s ease' }}
-        >
+          >
           <img 
             style={{ border: `3px solid ${color}` }}
             className="username--profile--image" src={ user.profile_image.medium } alt="" />
@@ -49,9 +53,10 @@ export const ModalImage = React.memo (({ values }) => {
       <figcaption 
         className="image--description"
         style={{ borderTop: `3px solid ${color}` }}
-      >{ description }</figcaption>
+        >{ description }</figcaption>
     </figure>
 
+}
       </>
   )
 }

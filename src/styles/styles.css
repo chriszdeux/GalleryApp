@@ -356,13 +356,13 @@
   height: 15rem;
   margin: 0 auto;
   opacity: .9;
-  -webkit-transition: 0.3s ease-in;
-  transition: 0.3s ease-in;
+  -webkit-transition: .3s ease-in;
+  transition: .3s ease-in;
 }
 
 .small__card {
   width: 100%;
-  height: inherit;
+  height: 15rem;
   overflow: hidden;
   position: relative;
   background-color: #181818;
@@ -910,7 +910,16 @@
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .small__card {
+    height: 30rem;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
+  .small__card {
+    height: 25rem;
+  }
   .user__stats {
     width: 30%;
   }
@@ -1065,6 +1074,10 @@
   margin: 1rem auto;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.modal__image__container .modal--image {
+  width: 100%;
 }
 
 .modal__image__container .image--description {

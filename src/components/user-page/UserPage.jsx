@@ -13,20 +13,28 @@ import { DataContext } from '../context/DataContext';
 import { useFetchUser } from '../hooks/useFetchUser';
 import { IoArrowBackSharp as BackIcon } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-export const UserPage = () => {
-
+export const UserPage = ({history}) => {
+  // debugger
+  const { goBack } = history
   const { showComponent, handleShowComponent } = useShowComponent(true);
   // debugger
+  
   const { dataUser, userLoading } = useContext(DataContext)
   // const { data, loading } = useFetchUser(userProfile);
   // const {listPhotos} = data
   // debugger
+  const handleGoBack = (e) => {
+    e.preventDefault();
+    // debugger
+    // debugger
+    return window.history.back();
+  }
   return (
     <section className="modal animate__animated animate__fadeIn">
       {/* <CloseIcon className="close--icon" /> */}
-      <Link to="/">
+      <a onClick={ handleGoBack }>
         <BackIcon className="close--icon" />
-      </Link>
+      </a>
         
         {
           !userLoading &&

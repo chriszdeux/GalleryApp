@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 const pages='30';
 const mainUrl =`https://api.unsplash.com/photos?client_id=${apiKey}&per_page=${pages}&page=`;
 
-
 export const MainData = async ( initialPage = 1 ) => {
   // const [mainData, setMainData] = useState([])
   // let counterPage = 1
   try {
-    const response = await fetch(`${mainUrl}${initialPage}`);
+    const randomMainPage = Math.floor(Math.random() * 30) + 1;
+    const response = await fetch(`${mainUrl}${randomMainPage}`);
     // const response2 = await fetch(`${mainUrl}${initialPage + 5}`);
     const data = await response.json()
     // const data2 = await response2.json()

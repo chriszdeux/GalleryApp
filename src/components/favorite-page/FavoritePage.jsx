@@ -8,10 +8,14 @@ import { ModalFavImages } from './ModalFavImages'
 // ModalFavImages
 import Masonry from 'react-masonry-component'
 import { MyMasonry } from './MyMasonry'
+import { Card } from '../main/Card'
 export const FavoritePage = (props) => {
-  const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions } } = useContext( DataContext )
+  const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions }, handleData, handleEachData } = useContext( DataContext )
+  useEffect(() => {
+    handleEachData(favImages)
+  }, [ favImages ])
   const [openModal, setOpenModal] = useState(false)
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [slider, setSlider] = useState(0)
   // const {slider, increment, decrement} = useIncrementDecrement( currentPosition )
   // debugger
@@ -22,9 +26,6 @@ export const FavoritePage = (props) => {
   //   itemSelector: 'photo-item',
   // }
   // debugger
-  useEffect(() => {
-    setData(favImages)
-  }, [ favImages ])
 
   const handleOpenModal = (position) => {
     // debugger
@@ -42,11 +43,19 @@ export const FavoritePage = (props) => {
     <>
     <section id="favorite__page" className="container-9">
     <h2 className="no--images">{ favImages.length > 0 ? `Favorite images: ${favImages.length}` : 'No Images' }</h2>
-      <MyMasonry 
+      {/* <MyMasonry 
       // columnCount="2"
       // gap="5"
       favImages= {favImages} 
-      />
+      /> */}
+
+      <div className="images__container">
+        {
+          !!handleData && handleData.map((data, index) => (
+            <Card key={ data.id } values={{ data, index }} />
+          ))
+        }
+      </div>
     </section>
     {/* {
       openModal &&

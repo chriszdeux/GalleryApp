@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { useEffect } from 'react/cjs/react.development';
 import  photo  from "../../utils/temp/photo.jpeg";
+import { DataContext } from '../context/DataContext';
 import { useShowComponent } from '../hooks/useShowComponent';
 import { ImageInfo } from '../modal/ImageInfo';
 import { ImageInfoUser } from '../modal/ImageInfoUser';
 
 
 export const Collection = ({item}) => {
+  // debugger
+  const { handleData, handleEachData } = useContext(DataContext);
   const { id, title, description, total_photos, preview_photos, position } = item;
+
+  useEffect(() => {
+    handleEachData(preview_photos)
+  }, [ preview_photos ])
   const {handleToggle, toggle} = useShowComponent(false)
 
   // debugger
@@ -29,7 +37,7 @@ export const Collection = ({item}) => {
       <h4 className="collection--name">{ title }</h4>
     </div>
     {
-        toggle && <ImageInfoUser values={{ handleToggle, position, preview_photos, id }}/>
+        toggle && <ImageInfoUser values={{ handleToggle, position, handleData, id }}/>
       }
     </>
   )

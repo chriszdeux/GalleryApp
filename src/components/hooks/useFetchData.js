@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { MainData } from "../../fetching-data/FetchData"
 
-export const useMainFetch = (randomPage) => {
+export const useMainFetch = () => {
   const [myData, setMyData] = useState({
     data: [],
     loading: true,
@@ -9,7 +9,7 @@ export const useMainFetch = (randomPage) => {
   })
 
   useEffect(() => {
-    MainData(randomPage)
+    MainData()
       .then(item => {
         setMyData({
           data: item,
@@ -17,7 +17,7 @@ export const useMainFetch = (randomPage) => {
           error: false
         })
       })
-  }, [ randomPage ])
+  }, [  ])
 
   return myData
 }
