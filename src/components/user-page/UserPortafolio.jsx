@@ -7,9 +7,9 @@ export const UserPortafolio = ({ values }) => {
   return (
     <div className="user__portafolio">
       <CollectionIcon className="collection--icon" 
-      onClick={ () => handleShowComponent(true) } />
+      onClick={ () => handleShowComponent(!showComponent) } />
       <LinksIcon className="links--icon" 
-      onClick={ () => handleShowComponent(false) } />
+      onClick={ () => handleShowComponent(!showComponent) } />
       {/* <LinksIcon className="links--icon" /> */}
     </div>
   )

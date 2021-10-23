@@ -13,9 +13,9 @@ export const Collection = ({item}) => {
   const { handleData, handleEachData } = useContext(DataContext);
   const { id, title, description, total_photos, preview_photos, position } = item;
 
-  useEffect(() => {
-    handleEachData(preview_photos)
-  }, [ preview_photos ])
+  // useEffect(() => {
+  //   handleEachData(preview_photos)
+  // }, [ item ])
   const {handleToggle, toggle} = useShowComponent(false)
 
   // debugger

@@ -32,7 +32,7 @@ export const ImageInfo = ( { values } ) => {
   useEffect(() => {
     setBgColor(color)
   }, [ index ])
-  
+  // debugger
   const [imageComponent, setImageComponent] = useState(null)
   // debugger
   return (

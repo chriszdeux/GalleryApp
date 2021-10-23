@@ -13,6 +13,7 @@ import { DataContext } from '../context/DataContext';
 import { useFetchUser } from '../hooks/useFetchUser';
 import { IoArrowBackSharp as BackIcon } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
+import { LoadingComponent } from '../loading/LoadingComponent';
 export const UserPage = ({history}) => {
   // debugger
   const { goBack } = history
@@ -24,7 +25,7 @@ export const UserPage = ({history}) => {
   // const {listPhotos} = data
   // debugger
   const handleGoBack = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // debugger
     // debugger
     return window.history.back();
@@ -32,12 +33,15 @@ export const UserPage = ({history}) => {
   return (
     <section className="modal animate__animated animate__fadeIn">
       {/* <CloseIcon className="close--icon" /> */}
-      <a onClick={ handleGoBack }>
-        <BackIcon className="close--icon" />
-      </a>
+      {/* <Link to={ handleGoBack }> */}
+      <Link to="/">
+        <BackIcon className="back--icon" />
+      </Link>
         
         {
-          !userLoading &&
+          userLoading 
+          ? <LoadingComponent />
+          :
             <div className="container-9">
             
               <UserInfo />
@@ -45,8 +49,7 @@ export const UserPage = ({history}) => {
               {
                 showComponent 
                 ? <PhotosGrid  />
-                : <Collections />
-                
+                : <Collections />               
               }
 
             

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BiLeftArrow as Left, BiRightArrow as Right } from 'react-icons/bi' 
 import { useEffect } from 'react/cjs/react.development'
 import { useIncrementDecrement } from '../hooks/useIncrementDecrement'
@@ -11,6 +11,8 @@ export const SliderControlsUser = ( { values } ) => {
   // useEffect(() => {
   //   handleEntranceAnimation()
   // }, [ slider ])
+
+
   return (
     <div className="slider__controls">
       {

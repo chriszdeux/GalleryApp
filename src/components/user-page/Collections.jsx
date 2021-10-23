@@ -29,7 +29,6 @@ export const Collections = () => {
           <Collection 
           key={item.id} 
           item={ item }
-          onClick={ handleToggle }
           />
           ))
         }                  

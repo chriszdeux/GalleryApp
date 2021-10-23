@@ -22,7 +22,7 @@ export const ImageInfoUser = ( { values } ) => {
   // const { data } = useContext(DataContext )
   // const { color } = data[position] 
   const { dataImagesCollection, loading } = useFetchCollectionImages( id )
-  
+  // debugger
   useEffect(() => {
     handleEachData(dataImagesCollection)
   }, [ dataImagesCollection ])
@@ -76,7 +76,7 @@ export const ImageInfoUser = ( { values } ) => {
           {
         !load &&
           <div  className={`modal__image`}>
-            <ModalImageUser values={{ data, slider, animation }} />
+            <ModalImage values={{ slider, animation }} />
           </div>
           }
 

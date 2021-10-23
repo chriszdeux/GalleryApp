@@ -8,7 +8,7 @@ import { AiFillCloseSquare as CloseIcon } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import { DataContext } from '../context/DataContext';
 
-export const MobileNavbar = () => {
+export const MobileNavbar = ({ handleToggle: myToggle }) => {
   const { favImages } = useContext(DataContext)
   const { handleToggle, toggle } = useShowComponent()
   return (
@@ -23,13 +23,13 @@ export const MobileNavbar = () => {
       // style={{ backgroundColor: '#000' }}  
     >
         <ul className="menu__list responsive">
-          <li className="list--item">
-          <NavLink exact to="/" activeClassName="active">
+          <li className="list--item" onClick={ myToggle }>
+          <NavLink exact to="/" activeClassName="active" >
           Main
           </NavLink>
           </li>
           <li className="list--item">
-          <NavLink exact to="/favorite-page" activeClassName="active">
+          <NavLink exact to="/favorite-page" activeClassName="active" onClick={ myToggle }>
           My Favorites <span className="fav--counter">{ favImages.length  }</span>
           </NavLink>
           </li>

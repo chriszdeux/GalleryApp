@@ -1,16 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&display=swap");
 .menu--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .search--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .like--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
   -webkit-transition: .3s ease;
   transition: .3s ease;
@@ -22,12 +22,12 @@
 }
 
 .dislike--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .close--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
   -webkit-transition: .3s ease;
   transition: .3s ease;
@@ -39,27 +39,32 @@
 }
 
 .collection--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .links--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .left--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .right--icon {
-  font-size: 3rem;
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
 .delete--icon {
-  font-size: 3rem;
+  font-size: 4rem;
+  color: #FFFFFF;
+}
+
+.back--icon {
+  font-size: 4rem;
   color: #FFFFFF;
 }
 
@@ -72,7 +77,7 @@
   background-color: #181818;
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 3;
   -webkit-box-shadow: 0 5px 10px 10px #181818;
           box-shadow: 0 5px 10px 10px #181818;
 }
@@ -467,8 +472,9 @@
   height: 100vh;
   position: fixed;
   top: 0;
+  margin-top: 5rem;
   background-color: #181818;
-  z-index: 2;
+  z-index: 3;
   overflow-y: scroll;
 }
 
@@ -476,6 +482,13 @@
   position: fixed;
   top: 5%;
   right: 5%;
+  z-index: 2;
+}
+
+.modal .back--icon {
+  position: absolute;
+  top: 5%;
+  left: 5%;
   z-index: 2;
 }
 
@@ -1041,6 +1054,7 @@
   position: absolute;
   top: 2%;
   left: 2%;
+  z-index: 1;
 }
 
 .username--profile {
@@ -1104,7 +1118,7 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 30rem;
-  bottom: 5%;
+  bottom: 10%;
   right: 0;
   width: 30rem;
   font-size: 2rem;
@@ -1259,6 +1273,23 @@
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+.loading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 * {

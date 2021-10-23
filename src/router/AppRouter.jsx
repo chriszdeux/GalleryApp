@@ -17,10 +17,9 @@ export const AppRouter = () => {
       <AnimatePresence exitBeforeEnter>
       <Header />
       <Switch>
-        <Route exact path="/"component={ Main }>
-        </Route>
+        <Route exact path="/"component={ Main } />
         <Route exact path="/favorite-page" component={ FavoritePage } / >
-        <Route exact path="/user-page" component={ UserPage }></Route>
+        <Route exact path="/user-page" component={ UserPage } />
       </Switch>
       </AnimatePresence>
     </Router>

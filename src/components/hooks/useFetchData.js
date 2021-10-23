@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { MainData } from "../../fetching-data/FetchData"
 
-export const useMainFetch = () => {
+export const useMainFetch = (initialPage) => {
   const [myData, setMyData] = useState({
     data: [],
     loading: true,
@@ -9,7 +9,7 @@ export const useMainFetch = () => {
   })
 
   useEffect(() => {
-    MainData()
+    MainData(initialPage)
       .then(item => {
         setMyData({
           data: item,
@@ -17,7 +17,7 @@ export const useMainFetch = () => {
           error: false
         })
       })
-  }, [  ])
+  }, [ initialPage ])
 
   return myData
 }

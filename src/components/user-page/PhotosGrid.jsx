@@ -16,7 +16,7 @@ export const PhotosGrid = () => {
 
   useEffect(() => {
     handleEachData(listPhotos)
-  }, [ listPhotos ])
+  }, [ dataUser ])
 
   // debugger
   return (

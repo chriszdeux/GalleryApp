@@ -45,7 +45,7 @@ const randomMainPage = Math.floor(Math.random() * 100);
 
 
 export const GalleryApp = () => {
-  const { data, loading } = useMainFetch();
+  const { data, loading } = useMainFetch(2);
   
   const masonryOptions = {
     fitWidth: false,

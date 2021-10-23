@@ -37,7 +37,7 @@ export const Header = () => {
         {
           toggle && 
           
-            <MobileNavbar />
+            <MobileNavbar handleToggle={ handleToggle }/>
         }
         
         {/* <MobileNavbar className="responsive"/> */}

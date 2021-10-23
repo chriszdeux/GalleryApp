@@ -7,6 +7,7 @@ import { DataContext } from '../context/DataContext';
 import { SliderControls } from '../utils/SliderControls';
 import { useIncrementDecrement } from '../hooks/useIncrementDecrement';
 import { FetchUser } from '../../fetching-data/FetchUser';
+import { LoadingComponent } from '../loading/LoadingComponent';
 
 export const Main = () => {
   
@@ -63,7 +64,9 @@ export const Main = () => {
   return (
     <>
       {
-        !loading && 
+        loading 
+        ? <LoadingComponent />
+        : 
         <>
           <main id="main">
         {/* !loading && */}
