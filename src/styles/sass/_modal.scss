@@ -1,22 +1,22 @@
-.modal {
+.user__page {
   // display: none;
   width: 100vw;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  margin-top: 5rem;
+  position: relative;
+  // top: 0;
+  // margin-top: 5rem;
   background-color: $header-color;
   // padding-top: 12rem;
-  z-index: 3;
+  z-index: 1;
   overflow-y:scroll;
 
-  .close--icon {
-    position: fixed;
-    // font-size: $extra;
-    top: 5%;
-    right: 5%;
-    z-index: 2;
-  }
+  // .close--icon {
+  //   position: fixed;
+  //   // font-size: $extra;
+  //   top: 5%;
+  //   right: 5%;
+  //   z-index: 2;
+  // }
   
   .back--icon {
     position: absolute;
@@ -214,7 +214,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
-  margin-top: 5rem;
+  // margin-top: 5rem;
+  margin: 5rem 0;
 }
 
 @mixin image--position($position, $order, $opacity) {

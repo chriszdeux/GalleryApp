@@ -12,7 +12,7 @@ import { useShowComponent } from '../hooks/useShowComponent';
 import { DataContext } from '../context/DataContext';
 import { useFetchUser } from '../hooks/useFetchUser';
 import { IoArrowBackSharp as BackIcon } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { LoadingComponent } from '../loading/LoadingComponent';
 export const UserPage = ({history}) => {
   // debugger
@@ -20,23 +20,25 @@ export const UserPage = ({history}) => {
   const { showComponent, handleShowComponent } = useShowComponent(true);
   // debugger
   
-  const { dataUser, userLoading } = useContext(DataContext)
-  // const { data, loading } = useFetchUser(userProfile);
+  const { dataUser, userLoading, userProfileData } = useContext(DataContext)
+  const back = useHistory()
+  // const data = useFetchUser(userProfile);
   // const {listPhotos} = data
   // debugger
   const handleGoBack = (e) => {
     // e.preventDefault();
     // debugger
     // debugger
-    return window.history.back();
+    back.push('/', null)
   }
+  // debugger
   return (
-    <section className="modal animate__animated animate__fadeIn">
+    <section className="user__page animate__animated animate__fadeIn">
       {/* <CloseIcon className="close--icon" /> */}
       {/* <Link to={ handleGoBack }> */}
-      <Link to="/">
-        <BackIcon className="back--icon" />
-      </Link>
+        <BackIcon className="back--icon" onClick={ handleGoBack }/>
+      {/* <Link to={ handleGoBack }>
+      </Link> */}
         
         {
           userLoading 
@@ -46,16 +48,16 @@ export const UserPage = ({history}) => {
             
               <UserInfo />
               <UserPortafolio  values={ {handleShowComponent, showComponent} } />
-              {
-                showComponent 
-                ? <PhotosGrid  />
-                : <Collections />               
-              }
 
             
             </div>
         }
-
+    
+        {
+          showComponent 
+          ? <PhotosGrid  />
+          : <Collections />               
+        }
       </section>
   )
 }

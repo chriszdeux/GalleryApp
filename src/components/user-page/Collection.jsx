@@ -8,7 +8,8 @@ import { ImageInfo } from '../modal/ImageInfo';
 import { ImageInfoUser } from '../modal/ImageInfoUser';
 
 
-export const Collection = ({item}) => {
+export const Collection = ({values}) => {
+  const { index, item } = values
   // debugger
   const { handleData, handleEachData } = useContext(DataContext);
   const { id, title, description, total_photos, preview_photos, position } = item;
@@ -37,7 +38,7 @@ export const Collection = ({item}) => {
       <h4 className="collection--name">{ title }</h4>
     </div>
     {
-        toggle && <ImageInfoUser values={{ handleToggle, position, handleData, id }}/>
+        toggle && <ImageInfoUser values={{ handleToggle, toggle, position, handleData, id }}/>
       }
     </>
   )

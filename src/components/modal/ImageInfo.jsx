@@ -12,19 +12,20 @@ import { SliderControlsUser } from '../utils/SliderControlsUser';
 export const ImageInfo = ( { values } ) => {
   // debugger
   const { handleToggle, index, id} = values;
-  // const goToComponent = useRef(id)
-  // const { handleToggle, data:{ urls, color, blur_hash, description, user, likes }, position} = values;
+  const { handleData, transitionAnimation, switchMenu, setSwitchMenu, dataCollection } = useContext(DataContext )
+  // debugger
+  const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = transitionAnimation
+  const [handleAnimation, setHandleAnimation] = useState('');
   useEffect(() => {
-
-  })
-  const { handleData, transitionAnimation } = useContext(DataContext )
+    setSwitchMenu(true)
+    setHandleAnimation(fade_in)
+  }, [  ])
   // debugger
   const { color } = handleData[index] 
   const [bgColor, setBgColor] = useState()
   const myRef = useRef()
   const [component, setComponent] = useState()
 
-  const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = transitionAnimation
 
   const {slider, increment, decrement, animation, memoNextImage, memoPrevImage} = useIncrementDecrement( index )
 
@@ -35,11 +36,21 @@ export const ImageInfo = ( { values } ) => {
   // debugger
   const [imageComponent, setImageComponent] = useState(null)
   // debugger
+  
+  const handleMenu = () => {
+    setHandleAnimation(fade_out)
+    setTimeout(() => {
+      handleToggle();
+      setSwitchMenu(!switchMenu)
+    }, 1000);
+  }
+
+
   return (
-    <section className={`modal__image__info ${fade_in}`}  >
+    <section className={`modal__image__info ${handleAnimation}`}  >
       <CloseIcon 
         className="close--icon"
-        onClick={ handleToggle }
+        onClick={ handleMenu }
       />
         {/* <div className="username"> */}
           {console.log('changed')
@@ -49,9 +60,9 @@ export const ImageInfo = ( { values } ) => {
           </figure> */}
         {/* </div> */}
         
-        <div  className={`modal__image $`} ref={ myRef }>
-        <ModalImage values={ {slider, animation} } />
-      </div>
+        <div  className={`modal__image `} ref={ myRef }>
+          <ModalImage values={ {slider, animation} } />
+        </div>
         {/* <div  className="modal__image">
           {
             data.map(item => (

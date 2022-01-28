@@ -9,9 +9,10 @@ export const useIncrementDecrement = ( initialState = 0, component ) => {
           fade_down,
           fade_left,
           fade_right, } = transitionAnimation;
+
   const [slider, setSlider] = useState(initialState)
   // const [entranceAnimations, setEntranceAnimations] = useState()
-  console.log('calling again')
+  // console.log('calling again')
   // debugger
   const [animation, setAnimation] = useState()
   const [animateComponent, setAnimateComponent] = useState()
@@ -48,5 +49,5 @@ export const useIncrementDecrement = ( initialState = 0, component ) => {
     const memoNextImage = useMemo(() => increment, [slider])
     const memoPrevImage = useMemo(() => decrement, [slider])
   
-  return { increment, decrement, slider, animation, animateComponent, memoNextImage, memoPrevImage }
+  return { increment, decrement, slider, animation, animateComponent, memoNextImage, memoPrevImage, transitionAnimation }
 }

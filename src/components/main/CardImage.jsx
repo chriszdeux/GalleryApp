@@ -6,22 +6,32 @@ import { DataContext } from '../context/DataContext';
 import { useShowComponent } from '../hooks/useShowComponent';
 import { ImagesSubmit } from '../images-reducer/ImagesSubmit';
 import { ImageInfo } from '../modal/ImageInfo';
+import { FiDelete as DeleteIcon } from 'react-icons/fi';
 
 export const CardImage = ( {values} ) => {
   // debugger
   const { data, index } = values;
   const { urls:{ thumb, small, regular, full, raw } } = data
-  const { dispatch, mediaQueries } = useContext(DataContext);
+  const { dispatch, mediaQueries,
+    setSwitchMenu, switchMenu} = useContext(DataContext);
   const { tablet, tablet_hd, desk, desk_hd, full_hd } = mediaQueries
   const { handleAdd } = ImagesSubmit(data, dispatch)
   // debugger
   const {handleToggle, toggle} = useShowComponent(false)
 
+
+  const handleManipulation = () => {
+    setTimeout(() => {
+      handleToggle(!toggle)
+      setSwitchMenu(!switchMenu)
+      
+    }, 300);
+  }
   return (
   <>
     <figure 
       className="small__card"
-      onClick={ handleToggle }
+      onClick={ handleManipulation }
     >
       <picture className="image__resolution__selection">
         <source media={ tablet_hd } srcSet={ regular } />
@@ -34,6 +44,7 @@ export const CardImage = ( {values} ) => {
         <LikeIcon className="like--icon" onClick={ handleAdd }/>
         <DislikeIcon className="dislike--icon" />
       </div> */}
+      <DeleteIcon className="delete--icon animate__animated animate__fadeInRigh" />
     </figure>
     {
       toggle && <ImageInfo values={ {handleToggle, index } }/>

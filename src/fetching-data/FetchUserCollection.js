@@ -22,7 +22,9 @@ export const FetchUserCollection = async ( id ) => {
         regular: item.urls.regular,
         full: item.urls.full,
         raw: item.urls.raw,
-      }
+      },
+      checked: false,
+
     }
   })
 

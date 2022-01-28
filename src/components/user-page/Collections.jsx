@@ -20,15 +20,16 @@ export const Collections = () => {
   // const { slider, increment, decrement } =useIncrementDecrement( position )
   // debugger
   const { handleToggle, toggle } = useShowComponent()
+  // debugger
   return (
     <>
-    <div className="user__collections">
+    <div className="user__collections container-9">
       {
         listCollection != undefined && 
-        listCollection.map(item => (
+        listCollection.map((item, index) => (
           <Collection 
           key={item.id} 
-          item={ item }
+          values={ {item, index} }
           />
           ))
         }                  

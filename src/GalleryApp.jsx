@@ -46,6 +46,7 @@ const randomMainPage = Math.floor(Math.random() * 100);
 
 export const GalleryApp = () => {
   const { data, loading } = useMainFetch(2);
+  const [handleModal, setHandleModal] = useState()
   
   const masonryOptions = {
     fitWidth: false,
@@ -79,11 +80,16 @@ export const GalleryApp = () => {
     localStorage.setItem('favImages', JSON.stringify(favImages))
   }, [ favImages ])
   // debugger
-  const [handleData, setHandleData] = useState()
-
+  const [handleData, setHandleData] = useState([])
+  const [switchMenu, setSwitchMenu] = useState(true)
   const handleEachData = ( data ) => {
+    // debugger
     setHandleData(data)
   }
+  const [inputValue, setInputValue] = useState({
+    search: ''
+  })
+
   // console.log(favImages)
   return (
     <>
@@ -103,7 +109,10 @@ export const GalleryApp = () => {
         masonryOptions,
         transitionAnimation,
         handleData, 
-        handleEachData
+        handleEachData,
+        switchMenu,
+        setSwitchMenu,
+        inputValue, setInputValue
       }}
   >
       <AppRouter />

@@ -14,6 +14,7 @@ const variants = {
   hidden: { opacity: 0 }
 }
 
+
 export const Header = () => {
   const { handleToggle, toggle } = useShowComponent()
   return (

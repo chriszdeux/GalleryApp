@@ -43,6 +43,8 @@
   .img--gallery--none {
     @include img-size();
     opacity: .8;
+    display: none;
+    // opacity: 0;
   }
   /* transform: translateY(-25%); */
 }

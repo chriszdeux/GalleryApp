@@ -38,26 +38,15 @@ export const MobileNavbar = ({ handleToggle: myToggle }) => {
           API info      
           </NavLink>
           </li>
-          <li className="list--item">
-          <NavLink exact to="contact-page" activeClassName="active">
-          Contact
-          </NavLink>
-          </li>
           <li 
           className="list--item"
-          onClick={ handleToggle }
           > 
-          {
-          !toggle
-          ? <SearchIcon className="search--icon"/>
-          : <CloseIcon className="close--icon"/>
-          } </li>
+          
+            <SearchForm />
+          </li>
 
         {/* <li className="list--item"></li> */}
         </ul>
-        {
-        toggle && <SearchForm />
-}
     </motion.div>
 
       

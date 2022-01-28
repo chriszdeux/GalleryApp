@@ -5,6 +5,7 @@ import { DataContext } from '../context/DataContext';
 import { useShowComponent } from '../hooks/useShowComponent';
 import { Card } from './Card';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import { useFetchSearch } from '../hooks/useFetchSearch';
 export const MainGallery = () => {
   // debugger
   const [currentValue, setCurrentValue] = useState(0)

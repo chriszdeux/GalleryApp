@@ -1,28 +1,16 @@
 import { apiKey } from "./ip-key";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
-const pages='30';
-const mainUrl =`https://api.unsplash.com/photos?client_id=${apiKey}&per_page=${pages}&page=`;
+const mainUrl =`https://api.unsplash.com/search/photos?client_id=${apiKey}&per_page=30&query=`;
 
-export const MainData = async ( initialPage = 1 ) => {
-  // const [mainData, setMainData] = useState([])
-  // let counterPage = 1
-  const randomPage = Math.floor(Math.random() * 100) + 1
-  console.log(`${mainUrl}${initialPage}`)
+export const fetchSearchData = async( search ) => {
   // debugger
   try {
-    const randomMainPage = Math.floor(Math.random() * 30) + 1;
-    const response = await fetch(`${mainUrl}${randomPage}`);
-    // const response2 = await fetch(`${mainUrl}${initialPage + 5}`);
-    const data = await response.json()
-    // const data2 = await response2.json()
+    if(search.length > 3) {
+      const cleanSearch  = search.trim().replace(/\s/g, '-')
+    const response = await fetch(`${ mainUrl }${ cleanSearch }`)
     // debugger
-    // const mixData = [...data]
-    // debugger
-    let temp = 0
-    const fullData = data.map((item, index) => {
-      // debugger
+    const { results } = await response.json()
+    const data = results.map(item => {
       return {
         // next_page: counterPage + 1,
         // position: temp++, ,6
@@ -62,28 +50,14 @@ export const MainData = async ( initialPage = 1 ) => {
         checked: false,
       }
     })
-    // debugger
-    // const realData = fullData.map((item, index) => {
-    //   debugger
-    //   return {...item, position: index}
-    // })
-    // let mainGalleryPictures = []
-    // // debugger
-    // for(let i = 0; i < 3; i++) {
-      //   // debugger
-      //   mainGalleryPictures.push(fullData[i])
-      // }
       // debugger
-    return fullData
-
-  } catch (error) {
-    console.error(error)
+    return data
   }
-
-  
+  // return undefined
+  // return undefined
+} catch (error) {
+  console.log(error)
+  debugger
+    return console.error(new Error(error))
+  }
 }
-
-
-
-
-// MainData(mainUrl)

@@ -17,6 +17,48 @@
   transition: .3s ease;
 }
 
+.like--icon--active {
+  @include icons();
+  // background-color: red;
+  border: 1px solid red;
+}
+
+.liked__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  .liked--icon {
+    
+    font-size: $jumbo-size;
+    animation-name: like;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+}
+
+
+@keyframes like {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
 .like--icon:active {
   transform: scale(1.1)
 }

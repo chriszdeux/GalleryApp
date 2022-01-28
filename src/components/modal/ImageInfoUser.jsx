@@ -13,8 +13,8 @@ import { useFetchCollectionImages } from '../hooks/useFetchCollectionImages';
 
 export const ImageInfoUser = ( { values } ) => {
   // debugger
-  const { handleToggle, position, id, preview_photos } = values
-  const { setDataCollection, dataCollection:{ data, load }, handleData, handleEachData } = useContext(DataContext)
+  const { handleToggle, position, id, preview_photos, toggle } = values
+  const { setDataCollection, dataCollection:{ data, load }, handleData, handleEachData, transitionAnimation } = useContext(DataContext)
   // debugger
   // const { handleToggle, position, id, } = values;
   // const goToComponent = useRef(id)
@@ -32,7 +32,7 @@ export const ImageInfoUser = ( { values } ) => {
       data: handleData,
       load: loading
     })
-  }, [ handleData ])
+  }, [ dataImagesCollection ])
   // debugger
   // debugger
   // const [dataCollection, setDataCollection] = useState({
@@ -42,29 +42,29 @@ export const ImageInfoUser = ( { values } ) => {
   
   // const { data, load } = dataCollection
   // const [bgColor, setBgColor] = useState()
+  const { fade_out, fade_in } = transitionAnimation
   const {slider, increment, decrement, animation, memoNextImage, memoPrevImage} = useIncrementDecrement( 0 )
+  const [handleAnimation, setHandleAnimation] = useState('');
+
 
   useEffect(() => {
-    // setDataCollection({
-    //   data: dataImagesCollection,
-    //   load: loading
-    // })
-  }, [ dataImagesCollection ])
+    setHandleAnimation(fade_in)
+  },[  ])
 
-  // const [imageComponent, setImageComponent] = useState(null)
-
-  // const [animation, setAnimation] = useState(false)
-
-  useEffect(() => {
-    // setAnimation(!animation)
-  }, [ position ])
+  const handleClose = () => {
+    setHandleAnimation(fade_out)
+    setTimeout(() => {
+      handleToggle()
+    }, 1000);
+  }
 
   // debugger
   return (
-    <section className="modal__image__info"  >
+    <>
+    <section className={`modal__image__info ${ handleAnimation }`}  >
       <CloseIcon 
         className="close--icon"
-        onClick={ handleToggle }
+        onClick={ handleClose }
       />
         {/* <div className="username"> */}
           {console.log('changed')/* <figure className="username__profile__image">
@@ -72,13 +72,13 @@ export const ImageInfoUser = ( { values } ) => {
           <h3 className="username--profile">username</h3>
           </figure> */}
         {/* </div> */}
-          
-          {
+        {
         !load &&
           <div  className={`modal__image`}>
             <ModalImage values={{ slider, animation }} />
           </div>
           }
+          
 
         {/* <div  className="modal__image">
           {
@@ -89,9 +89,11 @@ export const ImageInfoUser = ( { values } ) => {
         </div> */}
         {
           !load &&
-      <SliderControls values={{ slider, increment, decrement, data, memoPrevImage, memoNextImage }}/>
+      <SliderControlsUser values={{ slider, increment, decrement, handleData, memoPrevImage, memoNextImage }}/>
         }
 
       </section>
+      
+      </>
   )
 }

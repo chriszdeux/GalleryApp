@@ -11,12 +11,14 @@ import { MyMasonry } from './MyMasonry'
 import { Card } from '../main/Card'
 export const FavoritePage = (props) => {
   const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions }, handleData, handleEachData } = useContext( DataContext )
+  
   useEffect(() => {
     handleEachData(favImages)
   }, [ favImages ])
   const [openModal, setOpenModal] = useState(false)
   // const [data, setData] = useState([])
   const [slider, setSlider] = useState(0)
+
   // const {slider, increment, decrement} = useIncrementDecrement( currentPosition )
   // debugger
   // const myProps = {
@@ -26,6 +28,20 @@ export const FavoritePage = (props) => {
   //   itemSelector: 'photo-item',
   // }
   // debugger
+  const [add, setAdd] = useState()
+  const addAttribute = ( data ) => {
+    setAdd(data.map(item => {
+      return {
+        ...item,
+        deleteOption: true
+      }
+    }))
+  }
+
+  // useEffect(() => {
+  //   const adding = addAttribute(handleData);
+  //   return ()
+  // }, [favImages])
 
   const handleOpenModal = (position) => {
     // debugger

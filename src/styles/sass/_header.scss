@@ -7,7 +7,7 @@
   background-color: $header-color;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 1;
   box-shadow: $shadow-box;
 }
 
@@ -125,24 +125,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  background-color: $background-color-2;
+  // width: 100vw;
+  // height: 100vh;
+  // position: fixed;
+  // left: 0;
+  // top: 0;
+  height: 4rem;
+  padding: 0 1rem;
+  border-radius: .5rem;
+  /* width: 40%; */
+  background-color: $main-color;
+  overflow: hidden;
 }
 
 .search--input {
   // display: none;
-  width: 30rem;
+  // width: 30rem;
   height: 3rem;
   outline: none;
   border: none;
-  color: black;
+  color: $transparent-color;
   text-align: center;
+  font-weight: $regular-weight;
   font-size: 1.6rem;
   padding: 1rem;
+  border-radius: .5rem;
 }
 
 .desk__menu {

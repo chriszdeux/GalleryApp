@@ -14,7 +14,7 @@ export const FetchUser = async ( user ) => {
       const response3 = await fetch(urlCollections)
       
       const { id, updated_at:updated, username, name, twitter_username:twitter, portafolio_url:portafolio, bio, location, instagram_username:instagram, total_collections, total_photos, total_likes, photos, profile_image } = await response.json();
-      
+
       const data = await response2.json();
       const dataCollections = await response3.json();
 
@@ -38,6 +38,7 @@ export const FetchUser = async ( user ) => {
             raw: item.urls.raw,
           },
           position: index,
+          checked: false,
         }
       })
 
