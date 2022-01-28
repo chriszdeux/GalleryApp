@@ -28,7 +28,7 @@ export const Collections = () => {
         listCollection != undefined && 
         listCollection.map((item, index) => (
           <Collection 
-          key={item.id} 
+          key={`${item.id}${index}`} 
           values={ {item, index} }
           />
           ))

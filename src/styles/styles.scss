@@ -2,6 +2,7 @@
 
 
 @import 'sass/variables';
+@import './sass//states';
 @import 'sass/icons';
 @import 'sass/header';
 @import 'sass/main';
@@ -10,6 +11,7 @@
 @import './sass/media-queries';
 @import './sass/modal-image-info.scss';
 @import './sass/favorite-page';
+@import './sass/background-animated';
 @import './sass//masonry';
 @import './sass//loading';
 
@@ -43,6 +45,8 @@ body {
   height: auto;
   margin: 0 auto;
 }
+
+
 
 .container-10 {
   @include containers(100%);

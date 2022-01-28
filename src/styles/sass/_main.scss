@@ -1,6 +1,17 @@
 #main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* top: 123rem; */
+  /* left: 0; */
+  filter: blur(10px);
   text-align: center;
-  position: relative;
+  // position: relative;
 }
 
 .hero__image {
@@ -16,15 +27,15 @@
 }
 
 .hero__gallery {
-  display: none;
+  // display: none;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 70rem;
   overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 20%;
+  // position: absolute;
+  // right: 0;
+  // top: 20%;
 
   @mixin img-size {
     width: 37rem;

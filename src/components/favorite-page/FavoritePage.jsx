@@ -9,6 +9,8 @@ import { ModalFavImages } from './ModalFavImages'
 import Masonry from 'react-masonry-component'
 import { MyMasonry } from './MyMasonry'
 import { Card } from '../main/Card'
+import { useShowComponent } from '../hooks/useShowComponent'
+import { ImageInfo } from '../modal/ImageInfo'
 export const FavoritePage = (props) => {
   const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions }, handleData, handleEachData } = useContext( DataContext )
   
@@ -53,6 +55,13 @@ export const FavoritePage = (props) => {
 
   // useEffect()
 
+  const {handleToggle, toggle} = useShowComponent(false)
+  const [handleIndex, setHandleIndex] = useState({
+    index: '',
+    id: ''
+  });
+
+  const { index, id } = handleIndex
 
   // debugger
   return (
@@ -68,10 +77,13 @@ export const FavoritePage = (props) => {
       <div className="images__container">
         {
           !!handleData && handleData.map((data, index) => (
-            <Card key={ data.id } values={{ data, index }} />
+            <Card key={ `${data.id}${index}` } values={{ data, index, handleToggle, toggle, setHandleIndex }} />
           ))
         }
       </div>
+      {
+        toggle && <ImageInfo values={ {handleToggle, index, id } }/>
+      }
     </section>
     {/* {
       openModal &&

@@ -10,20 +10,25 @@ import { FiDelete as DeleteIcon } from 'react-icons/fi';
 
 export const CardImage = ( {values} ) => {
   // debugger
-  const { data, index } = values;
-  const { urls:{ thumb, small, regular, full, raw } } = data
+  const { data, index, handleToggle, toggle, setHandleIndex} = values;
+  const { urls:{ thumb, small, regular, full, raw }, id } = data
   const { dispatch, mediaQueries,
     setSwitchMenu, switchMenu} = useContext(DataContext);
   const { tablet, tablet_hd, desk, desk_hd, full_hd } = mediaQueries
   const { handleAdd } = ImagesSubmit(data, dispatch)
   // debugger
-  const {handleToggle, toggle} = useShowComponent(false)
+  // const {handleToggle, toggle} = useShowComponent(false)
 
 
   const handleManipulation = () => {
+    setHandleIndex({
+      index: index,
+      id: id
+    })
     setTimeout(() => {
       handleToggle(!toggle)
       setSwitchMenu(!switchMenu)
+      // setIndex(index)
       
     }, 300);
   }
@@ -46,9 +51,7 @@ export const CardImage = ( {values} ) => {
       </div> */}
       <DeleteIcon className="delete--icon animate__animated animate__fadeInRigh" />
     </figure>
-    {
-      toggle && <ImageInfo values={ {handleToggle, index } }/>
-    }
+ 
     </>
   )
 }

@@ -6,11 +6,10 @@ import { CardImageInfo } from './CardImageInfo'
 
 export const Card = ({ values }) => {
   // debugger
-  const { data, index } = values
+  const { data, index, handleToggle, toggle, setHandleIndex } = values
   // const { data, currentValue } = values
   // const { handleToggle, data } = values
   const { position, id } = data
-  const {handleToggle, toggle} = useShowComponent(false)
   // debugger
   
   return (
@@ -21,12 +20,10 @@ export const Card = ({ values }) => {
       className="card"
       onClick={ handleToggle }
     > */}
-      <CardImage values={ {data, index} }/>
+      <CardImage values={ {data, index, handleToggle, toggle, setHandleIndex} }/>
       {/* <CardImageInfo data={ data }/> */}
     {/* </article> */}
-    {
-      toggle && <ImageInfo values={ {handleToggle, index, id } }/>
-    }
+    
     </>
   )
 }

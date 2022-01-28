@@ -3,10 +3,18 @@
 @mixin icons {
   font-size: 4rem;
   color: $main-color;
+  opacity: .8;
+  cursor: pointer;
 }
 
 .menu--icon {
   @include icons();
+  &:active {
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 .search--icon {
   @include icons();
@@ -14,7 +22,13 @@
 
 .like--icon {
   @include icons();
-  transition: .3s ease;
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 
 .like--icon--active {
@@ -69,33 +83,77 @@
 
 .close--icon {
   @include icons();
-  transition: .3s ease;
+  &:active {
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 
-.close--icon:active {
-  transform: scale(1.1)
-}
 
 .collection--icon {
   @include icons();
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 
 .links--icon {
   @include icons();
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 .left--icon {
   @include icons();
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 
 .right--icon {
   @include icons();
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 
 .delete--icon {
   @include icons();
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 
 .back--icon {
   @include icons();
+  &:active {
+
+    @include active-state();
+  }
+  &:hover {
+    @include hover-state();
+  }
 }
 

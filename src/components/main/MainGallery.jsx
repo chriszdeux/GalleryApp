@@ -6,6 +6,7 @@ import { useShowComponent } from '../hooks/useShowComponent';
 import { Card } from './Card';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { useFetchSearch } from '../hooks/useFetchSearch';
+import { ImageInfo } from '../modal/ImageInfo';
 export const MainGallery = () => {
   // debugger
   const [currentValue, setCurrentValue] = useState(0)
@@ -25,31 +26,37 @@ export const MainGallery = () => {
   useEffect(() => {
     handleEachData(data)
   }, [ data ])
+  const {handleToggle, toggle} = useShowComponent(false)
+  const [handleIndex, setHandleIndex] = useState({
+    index: '',
+    id: ''
+  });
 
+  const { index, id } = handleIndex
   // debugger
   return (
     <>
-      <section className="images__container container-9">
+          {
+            toggle && <ImageInfo values={ {handleToggle, index, id } }/>
+          }
+      <section className="main--gallery">
+        
+        <LazyLoadComponent>
         {
           !!handleData && handleData.map((data, index) =>  
           (
-            <>
-            <LazyLoadComponent key={data.id}>
               <Card 
                 // handleToggle={ handleToggle }
-                key={ data.id }
-                values={{ data, index }}
+                key={ data.id}
+                values={{ data, index, handleToggle, toggle, setHandleIndex }}
                 // data={ data }
                 // onClick={ handleToggle }
                 />
-            </LazyLoadComponent>
-            </>
             )
-          )
-        }
+            )
+          }
+        </LazyLoadComponent>
       </section>
-      {
-      }
     </>
   )
 }

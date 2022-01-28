@@ -9,6 +9,8 @@ import { useIncrementDecrement } from '../hooks/useIncrementDecrement';
 import { FetchUser } from '../../fetching-data/FetchUser';
 import { LoadingComponent } from '../loading/LoadingComponent';
 import { cleanup } from '@testing-library/react';
+import { HeroImage } from './HeroImage';
+import { HeroGallery } from './HeroGallery';
 
 export const Main = () => {
   
@@ -107,41 +109,12 @@ export const Main = () => {
           <main id="main">
         {/* !loading && */}
           {/* <h1>{ currentPosition }</h1> */}
-          <figure className={ `hero__image ${animation}` }>
-            <picture>
-              <source media={ mediaQueries.tablet } srcSet={ handleData[currentPosition].urls.regular } />
-              <source media={ mediaQueries.tablet_hd } srcSet={ handleData[currentPosition].urls.regular } />
-              <source media={ mediaQueries.desk_hd } srcSet={ handleData[currentPosition].urls.full } />
-                <img className="hero--image" src={ handleData[currentPosition].urls.regular } alt="" />
-            </picture>
-          </figure>
-      
-      <figure className="hero__gallery">
-          {/* <img className="img--gallery--none" 
-          src={ data[currentPosition + 1].urls.regular_image } 
-          alt={ data[currentPosition + 1].alt_description }
-          placeholder={ data[currentPosition + 1].blur_hash } />
-           */}
-          
-          <img className={ `img--gallery--none ${animation2}` } src={ !!handleData && handleData[currentPosition + 1].urls.regular } alt={ handleData[currentPosition + 1].alt_description } placeholder={ handleData[currentPosition + 1].blur_hash } style={{
-            animationDelay: '1s'
-          }} />
-
-          <img className={ `img--gallery--active ${animation2}` } src={ !!handleData && handleData[currentPosition].urls.regular } alt={ handleData[currentPosition].alt_description } placeholder={ handleData[currentPosition].blur_hash }  />
-          
-          <img className={ `img--gallery--none ${animation2}` } src={ !!handleData && handleData[currentPosition + 2].urls.regular } alt={ handleData[currentPosition + 2].alt_description } placeholder={ handleData[currentPosition + 2].blur_hash } style={{
-            animationDelay: '2s'
-          }} />
-          {
-            // currentPosition <= data.length - 3 && 
-          }
-      </figure>
-      <div className="main__info">
-        {/* <h3 className="sub--title">{ currentPosition + 1}/{ handleData.length }</h3>
-        <h3 className="sub--title">{ data[currentPosition].created }</h3>
-        <h1 className="title">{ !!handleData && handleData[currentPosition].alt_description }</h1> */}
+      {/* <HeroImage values={{ currentPosition, animation }}/> */}
+      {/* <HeroGallery values={{ animation2, currentPosition }}/> */}
+     
+      {/* <div className="main__info">
         <p className="info">{ !!handleData && handleData[currentPosition].description }</p>
-      </div>
+      </div> */}
 
       {/* <SliderControls values={ {data, currentPosition, increment, decrement} }/> */}
 

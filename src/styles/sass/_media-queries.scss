@@ -32,7 +32,7 @@
     justify-content: flex-end;
     position: static;
     margin: 0;
-    margin-right: 2rem;
+    margin-right: 4rem;
   }
 
   .list--item {
@@ -52,6 +52,25 @@
   }
 }
 
+
+@media only screen and ( min-width: 1440px ) {
+  #header {
+    padding: 0 10%;
+  }
+
+  .navbar {
+    .close--icon {
+      padding-right: 0;
+    }
+    .menu--icon {
+      padding-right: 0;
+    }
+
+    .header--title {
+      padding-left: 0;
+    }
+  }
+}
 
 /*MAIN PAGE*/
 
@@ -81,11 +100,11 @@
 
   .hero__gallery {
     display: flex;
-    width: 90%;
-    height: 100vh;
-    right: 50%;
-    top: 50%;
-    transform: translateX(50%) translateY(-50%);
+    // width: 90%;
+    // height: 100vh;
+    // right: 50%;
+    // top: 50%;
+    // transform: translateX(50%) translateY(-50%);
 
     .img--gallery--active {
       width: 80%;
@@ -140,6 +159,26 @@
 
 @media only screen and ( min-width: 1680px ) {
   
+  /* width */
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $transparent-color;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $secondary-color-fade;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $ribbon-color;
+  }
+
   .hero__gallery {
     width: 100%;
     
@@ -189,7 +228,7 @@
   .modal__image__container {
 
     .modal--image {
-      // width: 0%;
+      width: 50%;
     }
   }
   
@@ -207,7 +246,11 @@
   .card {
     height: 40rem;
   }
+  .main--gallery {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
+
 // @media only screen and ( min-width: 1920px ) {
 //   .small__card {
 //     // height: 3rem;
@@ -291,6 +334,7 @@
     height: 40rem;
   }
 
+
 }
 
 
@@ -316,5 +360,13 @@
   
   .grid__images {
     column-count: 4;
+  }
+}
+
+//USER PAGE
+
+@media only screen and ( min-width: 1920px ) {
+  .user__page {
+    padding: 0 5%;
   }
 }

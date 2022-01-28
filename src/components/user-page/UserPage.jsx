@@ -14,6 +14,8 @@ import { useFetchUser } from '../hooks/useFetchUser';
 import { IoArrowBackSharp as BackIcon } from 'react-icons/io5';
 import { Link, useHistory } from 'react-router-dom';
 import { LoadingComponent } from '../loading/LoadingComponent';
+import { ImageInfo } from '../modal/ImageInfo';
+import { Header } from '../header/Header';
 export const UserPage = ({history}) => {
   // debugger
   const { goBack } = history
@@ -31,10 +33,20 @@ export const UserPage = ({history}) => {
     // debugger
     back.push('/', null)
   }
+  const {handleToggle, toggle} = useShowComponent(false)
+  const [handleIndex, setHandleIndex] = useState({
+    index: '',
+    id: ''
+  });
+
+  const { index, id } = handleIndex
+  // debugger
   // debugger
   return (
     <section className="user__page animate__animated animate__fadeIn">
       {/* <CloseIcon className="close--icon" /> */}
+      <Header />
+
       {/* <Link to={ handleGoBack }> */}
         <BackIcon className="back--icon" onClick={ handleGoBack }/>
       {/* <Link to={ handleGoBack }>
@@ -55,9 +67,12 @@ export const UserPage = ({history}) => {
     
         {
           showComponent 
-          ? <PhotosGrid  />
+          ? <PhotosGrid  values={{ handleToggle, toggle, setHandleIndex }}/>
           : <Collections />               
         }
+           {
+            toggle && <ImageInfo values={ {handleToggle, index } }/>
+          }
       </section>
   )
 }

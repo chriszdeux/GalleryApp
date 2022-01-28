@@ -1,0 +1,11 @@
+@mixin active-state {
+  transition: .2s ease; 
+  opacity: .5;
+  transform: scale(.98)
+}
+
+@mixin hover-state {
+  transition: .2s ease; 
+  opacity: 1;
+  
+}

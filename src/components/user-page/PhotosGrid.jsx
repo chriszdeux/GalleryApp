@@ -6,12 +6,12 @@ import Masonry from "react-masonry-component";
 import { Card } from '../main/Card';
 import { CardImage } from '../main/CardImage';
 
-export const PhotosGrid = () => {
+export const PhotosGrid = ({values}) => {
+  const { handleToggle, toggle, setHandleIndex } = values
   const { dataUser, handleData, handleEachData } = useContext(DataContext)
   const { listPhotos } = !!dataUser && dataUser
   // debugger
   const { masonryOptions } = useContext(DataContext)
-  const { handleToggle, toggle } = useShowComponent()
   // debugger
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const PhotosGrid = () => {
         // listPhotos !== undefined &&
         !!listPhotos && !!handleData && handleData.map((data, index) => (
           // <ImageContainer key={ item.id }item={ item }/>
-          <CardImage key={ data.id } values={{ data, index }}/>
+          <CardImage key={ `${data.id }${index}` } values={{ data, index, handleToggle, toggle, setHandleIndex  }}/>
           ))
         }
     </div>

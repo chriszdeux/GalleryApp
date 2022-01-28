@@ -9,20 +9,13 @@ import { motion } from 'framer-motion';
 import { DataContext } from '../context/DataContext';
 
 export const MobileNavbar = ({ handleToggle: myToggle }) => {
-  const { favImages } = useContext(DataContext)
+  const { favImages, transitionAnimation } = useContext(DataContext)
   const { handleToggle, toggle } = useShowComponent()
+  const { fade_in } = transitionAnimation
   return (
     // <div className="menu__dropdown container-10">
-    <motion.div 
-      // animate={{ x: -100 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2}}
-      className="responsive"
-      // style={{ backgroundColor: '#000' }}  
-    >
-        <ul className="menu__list responsive">
+    
+        <ul className={`menu__list responsive ${ fade_in }`} style={{ animationDelay: '.2s' }}>
           <li className="list--item" onClick={ myToggle }>
           <NavLink exact to="/" activeClassName="active" >
           Main
@@ -47,7 +40,6 @@ export const MobileNavbar = ({ handleToggle: myToggle }) => {
 
         {/* <li className="list--item"></li> */}
         </ul>
-    </motion.div>
 
       
     // </div>
