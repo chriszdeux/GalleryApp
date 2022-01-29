@@ -140,7 +140,7 @@
   .modal__image__container {
 
     .modal--image {
-      width: 80%;
+      // width: auto;
     }
   }
 }
@@ -197,7 +197,7 @@
   .modal__image__container {
 
     .modal--image {
-      width: 80%;
+      // width: 80%;
     }
   }
   .main__info {
@@ -229,7 +229,7 @@
     
     // width: 50%;
     .modal--image {
-      width: 100%;
+      // width: 100%;
     }
   }
   
@@ -340,6 +340,8 @@
 
 
 //MODAL IMAGES MAIN PAGE
+
+
 
 @media only screen and ( min-width: 1920px ) {
   // modal

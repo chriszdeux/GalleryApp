@@ -4,3 +4,25 @@
   color: $secondary-color;
   text-align: center;
 }
+
+.error--data {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 85%;
+  padding: 1rem;
+  position: fixed;
+  // border: 1px solid $main-color;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: $extra-large-size;
+  font-weight: $heavy-weight;
+  color: $secondary-color;
+  text-align: center;
+  cursor: pointer;
+
+  span {
+    font-size: $large-size;
+  }
+}

@@ -3,7 +3,7 @@ import { FetchUser } from "../../fetching-data/FetchUser"
 
 export const useFetchUser = ( user ) => {
   const [userData, setUserData] = useState({
-    data: {},
+    data: [],
     loading: true,
     error: false
   })
@@ -18,9 +18,10 @@ export const useFetchUser = ( user ) => {
     FetchUser(user)
       .then(item => {
         // debugger
-        if(item === undefined) {
+        // debugger
+        if(item?.id === undefined) {
           setUserData({
-            data: [],
+            data: undefined,
             loading: false,
             error: true
           })

@@ -35,11 +35,11 @@ export const SearchForm = ({ myToggle }) => {
     if(search.length > 2) {
       const replaceSimbols = /\s/gi
       // await submitForm(e.target);
+      history.push('/', null)
       setInputValue( search.toLowerCase().replace(replaceSimbols, '-') )
       setHandleSearch(search)
 
       setInputValue('')
-      history.push('/', null)
 
       setTimeout(() => {
         myToggle()

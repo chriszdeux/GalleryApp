@@ -20,11 +20,11 @@ export const AppRouter = () => {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="*"component={ Main } />
         <Route exact path="/"component={ Main } />
         <Route exact path="/gallery"component={ Main } />
         <Route exact path="/gallery/favorite-page" component={ FavoritePage } / >
         <Route exact path="/gallery/user-page" component={ UserPage } />
+        <Route path="*"component={ Main } />
         {/* <Route path='*' component={ <Redirect to="/gallery"  />}/> */}
       </Switch>
     </Router>

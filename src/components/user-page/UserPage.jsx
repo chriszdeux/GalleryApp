@@ -18,6 +18,7 @@ import { ImageInfo } from '../modal/ImageInfo';
 import { Header } from '../header/Header';
 import { ErrorData } from '../error/ErrorData';
 import { userDataSubmit } from '../images-reducer/userDataSubmit';
+import { MdOutlineReportProblem as WarningIcon } from 'react-icons/md';
 export const UserPage = ({history}) => {
   // debugger
   const { goBack } = history
@@ -48,10 +49,14 @@ export const UserPage = ({history}) => {
     id: ''
   });
 
+  const [handleHistoryData, setHandleHistoryData] = useState();
   useEffect(() => {
-    if(Object.keys(data).length === 0) {
-      back.push('/gallery', null)
-    }
+    
+      if(data === undefined || data.length === 0) {
+        setHandleHistoryData(
+          <h1 className='error--data'>Data trouble, go to  <Link to="/gallery">Main page</Link> <WarningIcon /> <span>please try again later </span></h1>
+        )
+      }
   }, [ data ])
 
   // useEffect(() => {
@@ -65,7 +70,7 @@ export const UserPage = ({history}) => {
     <section className={`user__page ${ fade_in }` } style={{ animationDelay:'1s' }}>
       {/* <CloseIcon className="close--icon" /> */}
       <Header />
-
+      { data === undefined && handleHistoryData }
       {/* <Link to={ handleGoBack }> */}
         <BackIcon className="back--icon" onClick={ handleGoBack }/>
       {/* <Link to={ handleGoBack }>
