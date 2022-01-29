@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { FetchUserCollection } from "../../fetching-data/FetchUserCollection"
 
 export const useFetchCollectionImages = ( id ) => {
@@ -7,15 +7,28 @@ export const useFetchCollectionImages = ( id ) => {
     loading: true,
     error: false
   })
-
+  const iseMounted = useRef(true)
+  useEffect(() => {
+    return () => {
+      iseMounted.current = false
+    }
+  }, [  ])
   useEffect(() => {
     FetchUserCollection( id )
       .then(item => {
-        setCollectionData({
-          dataImagesCollection: item,
-          loading: false,
-          error: false
-        })
+        if(item === undefined){
+          setCollectionData({
+            dataImagesCollection: [],
+            loading: false,
+            error: true
+          })
+        } else if( iseMounted.current ) {
+          setCollectionData({
+            dataImagesCollection: item,
+            loading: false,
+            error: false
+          })
+        }
       })
   }, [ id ])
   // debugger

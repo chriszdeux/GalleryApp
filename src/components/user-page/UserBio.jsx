@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
 
 export const UserBio = () => {
-  const { dataUser } = useContext(DataContext)
-  const { username, name, twitter, portafolio, bio, location, instagram } = !!dataUser && dataUser
+  const { userData:{ data } } = useContext(DataContext)
+  const { username, name, twitter, portafolio, bio, location, instagram } = !!data && data
 
   return (
     <ul className="user__personal__info">

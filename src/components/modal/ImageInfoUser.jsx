@@ -10,6 +10,8 @@ import { SliderControls } from '../utils/SliderControls';
 import { ModalImageUser } from './ModalImageUser';
 import { SliderControlsUser } from '../utils/SliderControlsUser';
 import { useFetchCollectionImages } from '../hooks/useFetchCollectionImages';
+import { LoadingComponent } from '../loading/LoadingComponent';
+import { ErrorData } from '../error/ErrorData';
 
 export const ImageInfoUser = ( { values } ) => {
   // debugger
@@ -21,7 +23,7 @@ export const ImageInfoUser = ( { values } ) => {
   // const { handleToggle, data:{ urls, color, blur_hash, description, user, likes }, position} = values;
   // const { data } = useContext(DataContext )
   // const { color } = data[position] 
-  const { dataImagesCollection, loading } = useFetchCollectionImages( id )
+  const { dataImagesCollection, loading, error } = useFetchCollectionImages( id )
   // debugger
   useEffect(() => {
     handleEachData(dataImagesCollection)
@@ -73,7 +75,11 @@ export const ImageInfoUser = ( { values } ) => {
           </figure> */}
         {/* </div> */}
         {
-        !load &&
+        load
+        ? <LoadingComponent />
+        : error
+          ? <ErrorData />
+          :
           <div  className={`modal__image`}>
             <ModalImage values={{ slider, animation }} />
           </div>

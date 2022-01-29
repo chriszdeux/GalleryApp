@@ -23,6 +23,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import 'animate.css'
 import { useFetchUser } from './components/hooks/useFetchUser';
 import { ImagesReducer } from './components/images-reducer/ImagesReducer'
+import { userSaveReducer } from './components/images-reducer/userSaveReducer';
 
 const mediaQueries = {
   tablet: '(min-width: 768px)',
@@ -45,7 +46,7 @@ const randomMainPage = Math.floor(Math.random() * 100);
 
 
 export const GalleryApp = () => {
-  const { data, loading } = useMainFetch(2);
+  const mainData = useMainFetch();
   const [handleModal, setHandleModal] = useState()
   
   const masonryOptions = {
@@ -63,7 +64,7 @@ export const GalleryApp = () => {
   
   const [userProfile, setUserProfile] = useState('')
   // debugger
-  const  {data: dataUser, loading: userLoading} = useFetchUser(userProfile);
+  const  userData = useFetchUser(userProfile);
   
   const [dataCollection, setDataCollection] = useState({
     data: [],
@@ -73,12 +74,19 @@ export const GalleryApp = () => {
   const init = () => {
     return JSON.parse(localStorage.getItem('favImages')) || []
   }
+  // const init2 = () => {
+  //   return JSON.parse(localStorage.getItem('user-saved')) || {}
+  // }
   
   const [favImages, dispatch] = useReducer(ImagesReducer, [], init)
-
+  // const [handle_user_data, dispatch2] = useReducer(userSaveReducer, {}, init2)
+  
   useEffect(() => {
     localStorage.setItem('favImages', JSON.stringify(favImages))
   }, [ favImages ])
+  // useEffect(() => {
+  //   localStorage.setItem('user-saved', JSON.stringify(handle_user_data))
+  // }, [ favImages ])
   // debugger
   const [handleData, setHandleData] = useState([])
   const [switchMenu, setSwitchMenu] = useState(true)
@@ -95,17 +103,17 @@ export const GalleryApp = () => {
     <>
     <DataContext.Provider 
       value={{ 
-        data,
-        loading,
-        userLoading,
+        mainData,
+        userData,
         mediaQueries,
         userProfile,
         setUserProfile,
-        dataUser,
         dataCollection,
         setDataCollection,
         favImages,
+        // handle_user_data,
         dispatch, 
+        // dispatch2, 
         masonryOptions,
         transitionAnimation,
         handleData, 

@@ -7,8 +7,9 @@ import { DataContext } from '../context/DataContext'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 export const UserInfo = () => {
   // debugger
-  const { dataUser, userLoading } = useContext(DataContext)
-  const { profile_image  } = !!dataUser && dataUser
+  const { userData:{ data }, handle_user_data } = useContext(DataContext)
+  //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+  const { profile_image  } = !!data && data
   const { small, medium, large } = !!profile_image && profile_image
   // const { profile_image:{small, medium, large} } = data
   // debugger

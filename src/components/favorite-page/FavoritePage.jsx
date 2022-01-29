@@ -12,7 +12,7 @@ import { Card } from '../main/Card'
 import { useShowComponent } from '../hooks/useShowComponent'
 import { ImageInfo } from '../modal/ImageInfo'
 export const FavoritePage = (props) => {
-  const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions }, handleData, handleEachData } = useContext( DataContext )
+  const { favImages, mediaQueries: { tablet, tablet_hd, desk, desk_hd, full_hd, masonryOptions }, handleData, handleEachData, transitionAnimation:{ fade_in } } = useContext( DataContext )
   
   useEffect(() => {
     handleEachData(favImages)
@@ -66,7 +66,7 @@ export const FavoritePage = (props) => {
   // debugger
   return (
     <>
-    <section id="favorite__page" className="container-9">
+    <section id="favorite__page" className={ `container-9 ` }>
     <h2 className="no--images">{ favImages.length > 0 ? `Favorite images: ${favImages.length}` : 'No Images' }</h2>
       {/* <MyMasonry 
       // columnCount="2"
@@ -74,7 +74,7 @@ export const FavoritePage = (props) => {
       favImages= {favImages} 
       /> */}
 
-      <div className="images__container">
+      <div className={`images__container ${ fade_in }`} style={{ animationDelay: '1s' }}>
         {
           !!handleData && handleData.map((data, index) => (
             <Card key={ `${data.id}${index}` } values={{ data, index, handleToggle, toggle, setHandleIndex }} />

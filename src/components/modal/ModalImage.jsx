@@ -73,7 +73,7 @@ export const ModalImage = React.memo (({ values }) => {
   // debugger
   return (
     <>
-      <Link to='./user-page' className="user--redirect">
+      <Link to='/gallery/user-page' className="user--redirect">
         <div 
           className={ `user__name ${fade_in}` }
           onClick={ () => setUserProfile(user.username) }
@@ -85,15 +85,15 @@ export const ModalImage = React.memo (({ values }) => {
             <img 
             style={{ border: `3px solid ${color}` }}
             className="username--profile--image" src={ user.profile_image.medium } alt="" />
-          <h3 className="username--profile">{ user.username }</h3>
+            <h3 className="username--profile">{ user.username }</h3>  
             </>
           }
         </div>
       </Link>
     <figure
-    // id={ username } 
-    // ref={ goToComponent }
-    className={`modal__image__container ${animation}`}>
+    className={`modal__image__container ${animation}`}
+    // style={{ backgroundColor: `${color}` }}
+    >
 
       <img className={`modal--image ${animation}`} src={ urls.regular } alt="" />
       <h3 className="likes">likes: { likes }
@@ -122,6 +122,7 @@ export const ModalImage = React.memo (({ values }) => {
         <LikedIcon className="liked--icon"/>
       </div>
     }
+    <div className="bottom--fade" style={{ backgroundColor: `${color}`, opacity: '.6' }}></div>
       </>
   )
 }

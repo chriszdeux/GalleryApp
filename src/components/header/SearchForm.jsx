@@ -5,7 +5,7 @@ import { DataContext } from '../context/DataContext'
 import { useFetchSearch } from '../hooks/useFetchSearch'
 import { HiMenuAlt3 as MenuIcon, HiOutlineSearch as SearchIcon  } from 'react-icons/hi';
 
-export const SearchForm = () => {
+export const SearchForm = ({ myToggle }) => {
   const { setInputValue, inputValue:{ search }, handleEachData } = useContext( DataContext )
   const history = useHistory()
   // const { search } = inputValue
@@ -32,7 +32,7 @@ export const SearchForm = () => {
   const handleSubmit =  ( e ) => {
     // debugger
     e.preventDefault();
-    if(search.length > 3) {
+    if(search.length > 2) {
       const replaceSimbols = /\s/gi
       // await submitForm(e.target);
       setInputValue( search.toLowerCase().replace(replaceSimbols, '-') )
@@ -40,6 +40,10 @@ export const SearchForm = () => {
 
       setInputValue('')
       history.push('/', null)
+
+      setTimeout(() => {
+        myToggle()
+      }, 300);
       // debugger
       // navigate(`/crypto-asset`, { replace: true })
       // debugger

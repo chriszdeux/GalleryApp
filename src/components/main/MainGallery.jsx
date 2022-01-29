@@ -10,7 +10,7 @@ import { ImageInfo } from '../modal/ImageInfo';
 export const MainGallery = () => {
   // debugger
   const [currentValue, setCurrentValue] = useState(0)
-  const { data, loading, handleData, handleEachData } = useContext( DataContext )
+  const { data, loading, handleData, handleEachData, transitionAnimation:{ fade_in } } = useContext( DataContext )
   const [newData, setNewData] = useState([])
   const goToComponent = useRef(null)
   // const addCurrentValue = ( data ) => {
@@ -39,7 +39,7 @@ export const MainGallery = () => {
           {
             toggle && <ImageInfo values={ {handleToggle, index, id } }/>
           }
-      <section className="main--gallery">
+      <div className={ `main--gallery ${ fade_in }` } style={{ animationDelay: '1s' }}>
         
         <LazyLoadComponent>
         {
@@ -56,7 +56,7 @@ export const MainGallery = () => {
             )
           }
         </LazyLoadComponent>
-      </section>
+      </div>
     </>
   )
 }

@@ -252,7 +252,10 @@
     margin: 0 auto;
     // margin-bottom: 3rem;
     transition: .3s ease;
-    
+    cursor: pointer;
+    &:active {
+      @include active-state();
+    }
     .photo--1 {
       @include image--position(0, 3, 1)
     }

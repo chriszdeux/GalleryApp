@@ -8,15 +8,15 @@ import { CardImage } from '../main/CardImage';
 
 export const PhotosGrid = ({values}) => {
   const { handleToggle, toggle, setHandleIndex } = values
-  const { dataUser, handleData, handleEachData } = useContext(DataContext)
-  const { listPhotos } = !!dataUser && dataUser
+  const { userData:{ data }, handleData, handleEachData } = useContext(DataContext)
+  const { listPhotos } = !!data && data
   // debugger
   const { masonryOptions } = useContext(DataContext)
   // debugger
 
   useEffect(() => {
     handleEachData(listPhotos)
-  }, [ dataUser ])
+  }, [ data ])
 
   // debugger
   return (

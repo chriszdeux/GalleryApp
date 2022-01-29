@@ -71,7 +71,7 @@ export const FetchUser = async ( user ) => {
       
       
     } catch (error) {
-      console.log(error)
+      return new Error(console.error(error))
     }
   }
 

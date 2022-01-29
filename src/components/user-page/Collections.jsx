@@ -8,9 +8,9 @@ import { ImageInfo } from '../modal/ImageInfo'
 import { Collection } from './Collection'
 
 export const Collections = () => {
-  const { dataUser, dataCollection:{ data, load }, handleData, handleEachData } = useContext( DataContext )
+  const { userData:{ data:data_user }, dataCollection:{ data, load }, handleData, handleEachData } = useContext( DataContext )
   // debugger
-  const { listCollection } = !!dataUser && dataUser;
+  const { listCollection } = !!data_user && data_user;
 // debugger
   // useEffect(() => {
   //   handleEachData(listCollection)

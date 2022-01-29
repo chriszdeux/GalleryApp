@@ -11,12 +11,14 @@ import { LoadingComponent } from '../loading/LoadingComponent';
 import { cleanup } from '@testing-library/react';
 import { HeroImage } from './HeroImage';
 import { HeroGallery } from './HeroGallery';
+import { ErrorData } from '../error/ErrorData';
 
 export const Main = () => {
   
   // const [currentPosition, setSlider] = useState(0)
-  const { data, loading, mediaQueries,  handleData, 
-    handleEachData,} = useContext( DataContext )
+  const { mainData, mediaQueries,  handleData, 
+    handleEachData,} = useContext( DataContext );
+    const { data, loading, error } = mainData
   const { slider, increment, decremen, transitionAnimation } = useIncrementDecrement(0)
   // const { id, color, urls } = !loading && data
   // debugger
@@ -55,44 +57,44 @@ export const Main = () => {
   const { fade_in, fade_out, fade_up, fade_down, fade_left, fade_right } = transitionAnimation
   // debugger
   // FetchUser('xps')
-  useEffect(() => {
-    // if(handleData.length > 0) {
-    setAnimation(fade_in)
-    setAnimation2(fade_in)
-    setTimeout(() => {
-      setAnimation(fade_out)
-      setAnimation2(fade_out)
-    }, 3000);
+  // useEffect(() => {
+  //   // if(handleData.length > 0) {
+  //   setAnimation(fade_in)
+  //   setAnimation2(fade_in)
+  //   setTimeout(() => {
+  //     setAnimation(fade_out)
+  //     setAnimation2(fade_out)
+  //   }, 3000);
 
 
-    const sliderInterval = setInterval(() => {
-      currentPosition === handleData.length - 3 ? setCurrentPosition(0) : setCurrentPosition(currentPosition + 1) 
-      // console.log(`datalength: ${handleData.length} --- current:${currentPosition} --- nextCurrent:${currentPosition + 1} --- afterNextCurrent: ${currentPosition + 2}`)
-    }, 6000)
+  //   const sliderInterval = setInterval(() => {
+  //     currentPosition === handleData.length - 3 ? setCurrentPosition(0) : setCurrentPosition(currentPosition + 1) 
+  //     // console.log(`datalength: ${handleData.length} --- current:${currentPosition} --- nextCurrent:${currentPosition + 1} --- afterNextCurrent: ${currentPosition + 2}`)
+  //   }, 6000)
     
-    return () => {
-      // console.log('cleaned')
-      clearInterval(sliderInterval)
-    }
-    // }
-  }, [ currentPosition ])
-  // const [position, setPosition] = useState(0)
-  const handleCurrentPosition = (position) => {
-    if(handleData.length > 0){
-      if(position > handleData.length) {
-        setCurrentPosition(0)
-      } else if(currentPosition < 0 ) {
-        setCurrentPosition(handleData.length)
-      }
-    }
-  }
-  useEffect(() => {
-    const currentImagePosition = handleCurrentPosition(currentPosition)
-    return () => {
-      cleanup(currentImagePosition)
-      // cleanup(currentImagePosition)
-    }
-  }, [currentPosition])
+  //   return () => {
+  //     // console.log('cleaned')
+  //     clearInterval(sliderInterval)
+  //   }
+  //   // }
+  // }, [ currentPosition ])
+  // // const [position, setPosition] = useState(0)
+  // const handleCurrentPosition = (position) => {
+  //   if(handleData.length > 0){
+  //     if(position > handleData.length) {
+  //       setCurrentPosition(0)
+  //     } else if(currentPosition < 0 ) {
+  //       setCurrentPosition(handleData.length)
+  //     }
+  //   }
+  // }
+  // useEffect(() => {
+  //   const currentImagePosition = handleCurrentPosition(currentPosition)
+  //   return () => {
+  //     cleanup(currentImagePosition)
+  //     // cleanup(currentImagePosition)
+  //   }
+  // }, [currentPosition])
   // debugger
   // if(currentPosition === data.length - 2) {
   //   debugger
@@ -102,9 +104,11 @@ export const Main = () => {
   return (
     <>
       {
-        handleData.length <= 0
+        loading
         ? <LoadingComponent />
-        : 
+        : error
+          ? <ErrorData />
+          :
         <>
           <main id="main">
         {/* !loading && */}

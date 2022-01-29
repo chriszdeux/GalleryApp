@@ -3,7 +3,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect,
+  Navigate
 } from "react-router-dom";
 import { Header } from '../components/header/Header';
 import { Main } from '../components/main/Main';
@@ -19,9 +21,10 @@ export const AppRouter = () => {
       <Header />
       <Switch>
         <Route exact path="/"component={ Main } />
-        <Route exact path="/favorite-page" component={ FavoritePage } / >
-        <Route exact path="/user-page" component={ UserPage } />
-        <Route exact path="/background" component={ AnimateBackground } />
+        <Route exact path="/gallery"component={ Main } />
+        <Route exact path="/gallery/favorite-page" component={ FavoritePage } / >
+        <Route exact path="/gallery/user-page" component={ UserPage } />
+        {/* <Route path='*' component={ <Redirect to="/gallery"  />}/> */}
       </Switch>
     </Router>
     <AnimateBackground />

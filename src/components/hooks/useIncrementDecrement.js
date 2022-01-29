@@ -20,11 +20,11 @@ export const useIncrementDecrement = ( initialState = 0, component ) => {
   // debugger
   const increment = (  ) => {
     setSlider(slider + 1)
-    setAnimation(fade_right)
+    setAnimation(fade_in)
     setTimeout(() => {
       setAnimation('')
       
-    }, 1000);
+    }, 800);
     // setTimeout(() => {
       // }, 100);
       // setTimeout(() => {
@@ -38,12 +38,12 @@ export const useIncrementDecrement = ( initialState = 0, component ) => {
         
   const decrement = (  ) => {
     setSlider(slider - 1)
-    setAnimation(fade_left)
+    setAnimation(fade_in)
     // debugger
     setTimeout(() => {
       setAnimation('')
       
-      }, 1000);
+      }, 800);
     }
     // debugger
     const memoNextImage = useMemo(() => increment, [slider])

@@ -62,6 +62,7 @@ export const ImageInfo = ( { values } ) => {
         
         <div  className={`modal__image `} ref={ myRef }>
           <ModalImage values={ {slider, animation} } />
+          
         </div>
         {/* <div  className="modal__image">
           {

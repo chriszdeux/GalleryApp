@@ -11,7 +11,9 @@ export const useShowComponent = ( value = false) => {
   }
 
   const handleToggle = () => {
-    setToggle(!toggle)
+    toggle
+    ? setToggle(false) : setToggle(true)
+    // setToggle(!toggle)
     console.log('clicked')
   }
 

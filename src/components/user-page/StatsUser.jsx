@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { DataContext } from '../context/DataContext'
 
 export const StatsUser = () => {
-  const { dataUser } = useContext(DataContext)
-  const { total_collections, total_photos, total_likes  } = !!dataUser && dataUser
+  const { userData:{ data } } = useContext(DataContext)
+  const { total_collections, total_photos, total_likes  } = !!data && data
 
   // debugger
   // const { total_likes, total_photos, total_collections  } = data
