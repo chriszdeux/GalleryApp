@@ -24,6 +24,7 @@ import 'animate.css'
 import { useFetchUser } from './components/hooks/useFetchUser';
 import { ImagesReducer } from './components/images-reducer/ImagesReducer'
 import { userSaveReducer } from './components/images-reducer/userSaveReducer';
+import { useFetchSearch } from './components/hooks/useFetchSearch';
 
 const mediaQueries = {
   tablet: '(min-width: 768px)',
@@ -97,6 +98,10 @@ export const GalleryApp = () => {
   const [inputValue, setInputValue] = useState({
     search: ''
   })
+  
+  // const [handleSearchForm, setHandleSearchForm] = useState([]);
+  const [handleSearch, setHandleSearch] = useState('');
+
 
   // console.log(favImages)
   return (
@@ -120,7 +125,8 @@ export const GalleryApp = () => {
         handleEachData,
         switchMenu,
         setSwitchMenu,
-        inputValue, setInputValue
+        inputValue, setInputValue,
+        handleSearch, setHandleSearch,
       }}
   >
       <AppRouter />

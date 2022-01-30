@@ -69,7 +69,7 @@ export const UserPage = ({history}) => {
   return (
     <section className={`user__page ${ fade_in }` } style={{ animationDelay:'1s' }}>
       {/* <CloseIcon className="close--icon" /> */}
-      <Header />
+      {/* <Header /> */}
       { data === undefined && handleHistoryData }
       {/* <Link to={ handleGoBack }> */}
         <BackIcon className="back--icon" onClick={ handleGoBack }/>

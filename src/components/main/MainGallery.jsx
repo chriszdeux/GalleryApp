@@ -10,9 +10,22 @@ import { ImageInfo } from '../modal/ImageInfo';
 export const MainGallery = () => {
   // debugger
   const [currentValue, setCurrentValue] = useState(0)
-  const { data, loading, handleData, handleEachData, transitionAnimation:{ fade_in } } = useContext( DataContext )
+  const {  loading, handleData, handleEachData, transitionAnimation:{ fade_in }, handleSearchForm } = useContext( DataContext )
   const [newData, setNewData] = useState([])
-  const goToComponent = useRef(null)
+  const isMounted = useRef(true)
+  // debugger
+  useEffect(() => {
+    return () => {
+      isMounted.current = false
+    }
+  }, [ ])
+  // useEffect(() => {
+  //   handleEachData(data)
+  // }, [ data ])
+  
+  // useEffect(() => {
+  //   handleEachData(data)
+  // }, [ data ])
   // const addCurrentValue = ( data ) => {
   //   return data.map(item => {
   //     setCurrentValue(currentValue + 1)
@@ -23,15 +36,15 @@ export const MainGallery = () => {
   //   })
   // }
   // debugger
-  useEffect(() => {
-    handleEachData(data)
-  }, [ data ])
+  // useEffect(() => {
+  //   handleEachData(data)
+  // }, [ data ])
   const {handleToggle, toggle} = useShowComponent(false)
   const [handleIndex, setHandleIndex] = useState({
     index: '',
     id: ''
   });
-
+// debugger
   const { index, id } = handleIndex
   // debugger
   return (
@@ -39,7 +52,7 @@ export const MainGallery = () => {
           {
             toggle && <ImageInfo values={ {handleToggle, index, id } }/>
           }
-      <div className={ `main--gallery ${ fade_in }` } style={{ animationDelay: '1s' }}>
+      <div className={ `main--gallery ${ fade_in }` } style={{ animationDelay: '.3s' }}>
         
         <LazyLoadComponent>
         {

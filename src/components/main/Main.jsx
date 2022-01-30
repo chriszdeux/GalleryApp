@@ -24,8 +24,8 @@ export const Main = () => {
   // debugger
   const [currentPosition, setCurrentPosition] = useState(0)
   useEffect(() => {
-      handleEachData(data)
-  }, [data])
+    handleEachData(data)
+  }, [ mainData ])
 
   useEffect(() => {
     setCurrentPosition(0)

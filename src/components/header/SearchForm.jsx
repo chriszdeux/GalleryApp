@@ -6,14 +6,17 @@ import { useFetchSearch } from '../hooks/useFetchSearch'
 import { HiMenuAlt3 as MenuIcon, HiOutlineSearch as SearchIcon  } from 'react-icons/hi';
 
 export const SearchForm = ({ myToggle }) => {
-  const { setInputValue, inputValue:{ search }, handleEachData } = useContext( DataContext )
+  const { setInputValue, inputValue:{ search }, handleEachData, setHandleSearch, handleSearch } = useContext( DataContext )
+
   const history = useHistory()
   // const { search } = inputValue
-  const [handleSearch, setHandleSearch] = useState('');
+  // const [handleSearch, setHandleSearch] = useState('');
+  const searchData = useFetchSearch(handleSearch)
 
   // const {  } = useFetchSearch( search )
   
-  const { data } = useFetchSearch(handleSearch)
+  // const data = useFetchSearch(handleSearch)
+  // debugger
   const handleOnChange = ( e ) => {
     // debugger
     setInputValue({
@@ -22,12 +25,14 @@ export const SearchForm = ({ myToggle }) => {
     // setInputValue(e.target.value)
     console.log(e.target.value)
   }
-
+  // useEffect(() => {
+  //   handleEachData([])
+  // }, [ ])
   useEffect(() => {
-    if(data.length > 0) {
-      handleEachData(data)
+    if(searchData.data.length > 0) {
+      handleEachData(searchData.data)
     }
-  }, [ data ])
+  }, [ searchData ])
 
   const handleSubmit =  ( e ) => {
     // debugger
@@ -35,22 +40,29 @@ export const SearchForm = ({ myToggle }) => {
     if(search.length > 2) {
       const replaceSimbols = /\s/gi
       // await submitForm(e.target);
-      history.push('/', null)
       setInputValue( search.toLowerCase().replace(replaceSimbols, '-') )
       setHandleSearch(search)
-
       setInputValue('')
-
+      setTimeout(() => {
+        setHandleSearch('')
+      }, 200);
+      // setTimeout(() => {
+        
+      //   history.push('/gallery', null)
+      // }, 500);
+      
+      
       setTimeout(() => {
         myToggle()
       }, 300);
-      // debugger
-      // navigate(`/crypto-asset`, { replace: true })
-      // debugger
-      // navigate('../asset/', { replace: true })
     }
   }
+  
+  const handleToMain = () => {
+
+  }
   // console.log(searchInput)
+  // debugger
   return (
     <form action="" className="search__form" onSubmit={ handleSubmit }>
       <input 
@@ -60,6 +72,7 @@ export const SearchForm = ({ myToggle }) => {
         onChange={ handleOnChange } 
         className="search--input" 
         autoComplete='off'
+        // onClick={ handleToMain }
         />
         <SearchIcon style={{
           color: '#181818'
