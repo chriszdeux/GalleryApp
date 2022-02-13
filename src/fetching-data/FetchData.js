@@ -1,9 +1,20 @@
-import { apiKey } from "./ip-key";
+import { apiKey, apiKey2 } from "./ip-key";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+
+const random = Math.floor(Math.random() * 100) + 1
+let key = ''
+if(random%2 === 0) {
+  key = apiKey2
+} else {
+  key = apiKey
+}
+
 const pages='30';
-const mainUrl =`https://api.unsplash.com/photos?client_id=${apiKey}&per_page=${pages}&page=`;
+const mainUrl =`https://api.unsplash.com/photos?client_id=${key}&per_page=${pages}&page=`;
+
+
 
 export const MainData = async ( initialPage = 1 ) => {
   // const [mainData, setMainData] = useState([])

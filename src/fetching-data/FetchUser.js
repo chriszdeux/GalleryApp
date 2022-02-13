@@ -1,9 +1,20 @@
+import { apiKey2, apiKey3 } from "./ip-key";
+
+const random = Math.floor(Math.random() * 100) + 1
+let key = ''
+if(random%2 === 0) {
+  key = apiKey2
+} else {
+  key = apiKey3
+}
+
+
 
 export const FetchUser = async ( user ) => {
-  const url = `https://api.unsplash.com/users/${user}?client_id=_epala6bzfchMcieAG_MshzIQo_8kapeQE5QRsfiw-g&per_page=30`;
-  const urlPhotos = `https://api.unsplash.com/users/${user}/photos?client_id=_epala6bzfchMcieAG_MshzIQo_8kapeQE5QRsfiw-g&per_page=30`;
+  const url = `https://api.unsplash.com/users/${user}?client_id=${key}&per_page=30`;
+  const urlPhotos = `https://api.unsplash.com/users/${user}/photos?client_id=${key}&per_page=30`;
   // const urlPhotos = 
-  const urlCollections = `https://api.unsplash.com/users/${user}/collections?client_id=_epala6bzfchMcieAG_MshzIQo_8kapeQE5QRsfiw-g&per_page=30`;
+  const urlCollections = `https://api.unsplash.com/users/${user}/collections?client_id=${ key }&per_page=30`;
 
   // const urlPhotos = 
   

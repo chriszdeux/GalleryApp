@@ -1,15 +1,27 @@
-import { apiKey } from "./ip-key";
+import { apiKey, apiKey2 } from "./ip-key";
 
-const mainUrl =`https://api.unsplash.com/search/photos?client_id=${apiKey}&per_page=30&query=`;
+
+
+const random = Math.floor(Math.random() * 100) + 1
+let key = ''
+if(random%2 === 0) {
+  key = apiKey2
+} else {
+  key = apiKey
+}
+
+
+const mainUrl =`https://api.unsplash.com/search/photos?client_id=${key}&per_page=30&query=`;
 
 export const fetchSearchData = async( search ) => {
   // debugger
   try {
-    if(search.length > 3) {
-      const cleanSearch  = search.trim().replace(/\s/g, '-')
-    const response = await fetch(`${ mainUrl }${ cleanSearch }`)
+
+      // const cleanSearch  = search.trim().replace(/\s/g, '-')
+
+      const response = await fetch(`${ mainUrl }${ search }`)
+      const { results } = await response.json()
     // debugger
-    const { results } = await response.json()
     const data = results.map(item => {
       return {
         // next_page: counterPage + 1,
@@ -52,12 +64,11 @@ export const fetchSearchData = async( search ) => {
     })
       // debugger
     return data
-  }
   // return undefined
   // return undefined
 } catch (error) {
   console.log(error)
-  debugger
-    return console.error(new Error(error))
+  // debugger
+    return error
   }
 }

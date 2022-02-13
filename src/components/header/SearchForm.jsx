@@ -42,10 +42,10 @@ export const SearchForm = ({ myToggle }) => {
       // await submitForm(e.target);
       setInputValue( search.toLowerCase().replace(replaceSimbols, '-') )
       setHandleSearch(search)
-      setInputValue('')
       setTimeout(() => {
+        setInputValue('')
         setHandleSearch('')
-      }, 200);
+      }, 1000);
       // setTimeout(() => {
         
       //   history.push('/gallery', null)

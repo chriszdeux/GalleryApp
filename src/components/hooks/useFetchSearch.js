@@ -16,7 +16,8 @@ export const useFetchSearch = ( search ) => {
   }, [  ])
   // debugger
   useEffect(() => {
-    fetchSearchData(search)
+    // if(search.length > 3 ) {
+      fetchSearchData(search)
     .then(item => {
         // debugger
         if(item === undefined) {
@@ -35,7 +36,8 @@ export const useFetchSearch = ( search ) => {
           })
         }
       })
+    // }
   }, [ search ])
-
+  // debugger
   return searchData
 }
