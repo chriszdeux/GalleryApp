@@ -53,7 +53,7 @@ export const ImageInfo = ( { values } ) => {
         onClick={ handleMenu }
       />
         {/* <div className="username"> */}
-          {console.log('changed')
+          {
           /* <figure className="username__profile__image">
             <img className="username--profile--image" src={ photo } alt="" />
           <h3 className="username--profile">username</h3>

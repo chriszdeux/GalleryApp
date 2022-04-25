@@ -14,7 +14,6 @@ export const useShowComponent = ( value = false) => {
     toggle
     ? setToggle(false) : setToggle(true)
     // setToggle(!toggle)
-    console.log('clicked')
   }
 
   const handleModalPosition = (position) => {

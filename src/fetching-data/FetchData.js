@@ -20,7 +20,7 @@ export const MainData = async ( initialPage = 1 ) => {
   // const [mainData, setMainData] = useState([])
   // let counterPage = 1
   const randomPage = Math.floor(Math.random() * 100) + 1
-  console.log(`${mainUrl}${initialPage}`)
+
   // debugger
   try {
     const randomMainPage = Math.floor(Math.random() * 30) + 1;

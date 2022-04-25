@@ -24,7 +24,7 @@ export const ModalImage = React.memo (({ values }) => {
   const { urls, color, blur_hash, description, user, likes, checked } = !!handleData && handleData[slider]
   // debugger
   const { handleAdd, handleDelete, handleRemove, setHandleRemove, handleLike } = ImagesSubmit(handleData[slider], dispatch)
-  console.log(`showing more again`)
+
   // const [handleAddOption, setHandleAddOption] = useState(handleRemove)
   // if(animation !== undefined) {
     // debugger

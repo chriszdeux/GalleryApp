@@ -67,7 +67,7 @@ export const fetchSearchData = async( search ) => {
   // return undefined
   // return undefined
 } catch (error) {
-  console.log(error)
+  
   // debugger
     return error
   }
